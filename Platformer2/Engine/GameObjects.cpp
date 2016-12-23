@@ -33,7 +33,7 @@ GameObject::GameObject(std::string texturePath, sf::Vector2f pos)
 
 void GameObject::Update(sf::RenderWindow * window, float dt)
 {
-	m_sprite.setPosition(m_pos);
+//	m_sprite.setPosition(m_pos);
 }
 
 
@@ -179,22 +179,11 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	}
 
 	m_sprite.setPosition(m_pos);
-
-
-
-	
-
-
-	
-
-
 }
 
 void Player::Draw(sf::RenderWindow* window)
 {
 	GameObject::Draw(window);
-	
-	window->draw(m_sprite);
 }
 
 

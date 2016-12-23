@@ -7,13 +7,7 @@
 Game::Game()
 {
 	
-	
-	
-}
-
-void Game::Update(sf::RenderWindow * window, float dt)
-{
-    m_player = new Player("Sprites/PNG/AlienBlueFront.png", sf::Vector2f(75, 460));
+	m_player = new Player("Sprites/PNG/AlienBlueFront.png", sf::Vector2f(75, 460));
 	m_platform = new Platform("Sprites/PNG/grass.png", sf::Vector2f(300, 400));
 
 	AddObject(m_player);
@@ -31,15 +25,18 @@ void Game::Update(sf::RenderWindow * window, float dt)
 
 	AddObject(new Platform("Sprites/PNG/grass.png", sf::Vector2f(400, 200)));
 	
+}
+
+void Game::Update(sf::RenderWindow * window, float dt)
+{
+    
+	
 	for (int i = 0; i < m_gameObjects.size(); i++)
 	{
 		GameObject* current = m_gameObjects[i];
 
 	
 		current->Update(window, dt);
-
-		
-
 		
 	}
 

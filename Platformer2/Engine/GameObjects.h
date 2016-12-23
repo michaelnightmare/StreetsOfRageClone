@@ -53,7 +53,7 @@ protected:
 	float jumpcd;
 	bool playerInAir;
 	bool isgrounded;
-	float Ps = 100;
+	float Ps = 1000;
 	
 
 };

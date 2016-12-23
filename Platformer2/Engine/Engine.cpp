@@ -9,6 +9,7 @@
 int main()
 {
 	Game game;
+	srand(static_cast<unsigned int>(time(0)));
 
 	sf::RenderWindow window(sf::VideoMode(1000, 700), "Platformer!");
 
@@ -21,8 +22,12 @@ int main()
 	background.setTexture(texture2);
 	background.setScale(4, 2);
 	
+	sf::Clock clock;
+
 	while (window.isOpen())
 	{
+		sf::Time dt = clock.restart();
+
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
@@ -30,13 +35,11 @@ int main()
 				window.close();
 		}
 			
-       window.draw(background);
-	
+		window.clear();
 
-		game.Update(&window, 0.01);
-
+        window.draw(background);
+		game.Update(&window, dt.asSeconds());
 		game.Draw(&window);
-		
 		
 		window.display();
 	}
