@@ -16,14 +16,13 @@ GameObject::GameObject(std::string texturePath, sf::Vector2f pos)
 	{
 		m_texture.loadFromFile(texturePath);
 		m_sprite.setTexture(m_texture);
-		m_sprite.setOrigin(m_sprite.getTextureRect().width * 0.5f, m_sprite.getTextureRect().height * 0.5f);
-		
+
 	}
 
-	Top = GetPos().y;
-	Bottom = GetPos().y + GetSize().y;
-	Right = GetPos().x + GetSize().x;
-	Left = GetPos().x;
+	Top = m_sprite.getPosition().y;
+	Bottom = m_sprite.getPosition().y + m_sprite.getScale().y;
+	Right = m_sprite.getPosition().x + m_sprite.getScale().x;
+	Left = m_sprite.getPosition().x;
 	m_vel.x = 0;
 	m_vel.y = 0;
 	
@@ -57,6 +56,7 @@ Player::Player(std::string texturePath, sf::Vector2f pos)
 	
 {
 	
+	m_sprite.setOrigin(m_sprite.getTextureRect().width * 0.5f, m_sprite.getTextureRect().height * 0.5f);
 	
 
 }
@@ -91,9 +91,9 @@ void Player::Update(sf::RenderWindow * window, float dt)
 		{
 			m_pos = sf::Vector2f(m_sprite.getPosition().x, 0);
 		}
-		/*if (m_shape.getPosition().y + m_shape.getSize().y > 600)
+	/*	if (m_sprite.getPosition().y + m_shape.getSize().y > 500)
 		{
-			m_shape = sf::Vector2f(m_shape.getPosition().x, 600- m_shape.getSize().y);
+			m_pos = sf::Vector2f(m_sprite.getPosition().x, 500- m_sprite.getScale().y);
 		}*/
 		
 
@@ -163,6 +163,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	for (int i = 0; i < m_owner->m_gameObjects.size(); i++)
 	{
 		GameObject* current = m_owner->m_gameObjects[i];
+		
 		if (current != this)
 		{
 			if (current->Collision(this))
@@ -197,22 +198,19 @@ void Player::Draw(sf::RenderWindow* window)
 	: GameObject("Sprites/PNG/grass.png", pos)
 
 {
-	
+	m_sprite.setOrigin(m_sprite.getTextureRect().width * 0.5f, m_sprite.getTextureRect().height * 0.5f);
 
 }
 
 bool  Platform::Collision(GameObject* obj)
  {
 
-	 m_shape.setFillColor(sf::Color::White);
-
-
 	 if ((obj->GetPos().y + obj->GetSize().y > Top) && 
 		 (obj->GetPos().y  < Bottom) && 
 		 (obj->GetPos().x + obj->GetSize().x  > Left) &&
 		 (obj->GetPos().x < Right))
 	 {
-		 m_shape.setFillColor(sf::Color::Red);
+		 
 		
 	
 
