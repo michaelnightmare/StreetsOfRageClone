@@ -44,7 +44,7 @@ void GameObject::Draw(sf::RenderWindow * window)
 
 /////////////////////////////// PLAYER
 
-Player::Player(std::string texturePath, sf::Vector2f pos)
+Player::Player(std::string texturePath,  sf::Vector2f pos)
 	: GameObject(texturePath, pos)
 	, isjumping(false)
 	, jumpcd(0.0f)

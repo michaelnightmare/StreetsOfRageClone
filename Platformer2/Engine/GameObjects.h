@@ -4,6 +4,7 @@
 #include <SFML/Audio.hpp>
 #include <string>
 #include <vector>
+#include "Collider.h"
 
 
 class Game;
@@ -47,6 +48,9 @@ public:
 	Player(std::string texturePath, sf::Vector2f pos);
 	void Draw(sf::RenderWindow* window);
 	virtual void Update(sf::RenderWindow* window, float dt);
+
+	sf::Vector2f GetPosition() { return body.getPosition(); }
+	Collider GetCollider() { return Collider(body); }
 	
 protected:
 	bool isjumping;
@@ -55,6 +59,9 @@ protected:
 	bool isgrounded;
 	float Ps = 1000;
 	
+
+	private:
+		sf::RectangleShape body;
 
 };
 
@@ -69,9 +76,10 @@ public:
 	virtual void Update(sf::RenderWindow* window, float dt);
 
 	virtual bool Collision(GameObject* obj);
+	Collider GetCollider() { return Collider(body); }
 
 protected:
 
-
+	sf::RectangleShape body; 
 };
 
