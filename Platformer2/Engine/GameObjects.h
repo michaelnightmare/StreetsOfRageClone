@@ -7,7 +7,9 @@
 #include "Collider.h"
 
 
+
 class Game;
+class Player;
 
 class GameObject
 {
@@ -28,6 +30,7 @@ public:
 	float Left;
 	float Right;
 	Collider GetCollider() { return Collider(body); }
+	sf::Vector2f GetPosition() { return body.getPosition(); }
 
 
 protected:
@@ -49,15 +52,14 @@ class Platform : public GameObject
 
 {
 public:
-	Platform (std::string texturePath, sf::Vector2f pos);
+	Platform (std::string texturePath, sf::Vector2f pos, Player* player);
 	virtual void Draw(sf::RenderWindow* window);
 	virtual void Update(sf::RenderWindow* window, float dt);
 
 	virtual bool Collision(GameObject* obj);
-	Collider GetCollider() { return Collider(body); }
 
-protected:
-
-	sf::RectangleShape body; 
+private:
+	//Super dirty, find way to fix collider to avoid this being necessary
+	Player* m_player;
 };
 

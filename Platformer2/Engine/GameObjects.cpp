@@ -52,17 +52,9 @@ Player::Player(std::string texturePath, sf::Vector2f pos)
 	, jumpcd(0.0f)
 	, playerInAir(false)
 	, isgrounded(true)
-
-	
-	
-	
 {
-	
 	m_sprite.setOrigin(m_sprite.getTextureRect().width * 0.5f, m_sprite.getTextureRect().height * 0.5f);
-
-	
-	
-
+	body.setPosition(pos);
 }
 
 void Player::Update(sf::RenderWindow * window, float dt)
@@ -73,7 +65,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 
 	
 	
-
+	body.setPosition(this->GetPos().x, this->GetPos().y);
 	sf::Vector2f gravity(0.0f, 10.f);
 	accel = gravity;
 
@@ -199,42 +191,34 @@ void Player::Draw(sf::RenderWindow* window)
 
 
 ///////////////////////////// Platform
- Platform::Platform(std::string texturePath, sf::Vector2f pos)
-	: GameObject("Sprites/PNG/grass.png", pos)
+ Platform::Platform(std::string texturePath, sf::Vector2f pos, Player* player)
+	: GameObject("Sprites/PNG/grass.png", pos), m_player(player)
 
 {
 	m_sprite.setOrigin(m_sprite.getTextureRect().width * 0.5f, m_sprite.getTextureRect().height * 0.5f);
+	body.setPosition(pos);
 	
 
 }
 
 bool  Platform::Collision(GameObject* obj)
  {
-
 	 if ((obj->GetPos().y + obj->GetSize().y > Top) && 
 		 (obj->GetPos().y  < Bottom) && 
 		 (obj->GetPos().x + obj->GetSize().x  > Left) &&
 		 (obj->GetPos().x < Right))
 	 {
-		 
-		
-	
-
 		 return true; 
-		 
-		
 	 }
-	
-	
-	
+
 	return false; 
-	
-	
  }
 
  void Platform::Update(sf::RenderWindow * window, float dt)
  {
 	 GameObject::Update(window, dt);
+
+	 this->GetCollider().CheckCollision(m_player->GetCollider(), 1.0f);
  }
 
  void Platform::Draw(sf::RenderWindow* window)

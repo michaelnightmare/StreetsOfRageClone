@@ -10,8 +10,6 @@ public:
 	void Draw(sf::RenderWindow* window);
 	virtual void Update(sf::RenderWindow* window, float dt);
 
-	sf::Vector2f GetPosition() { return body.getPosition(); }
-	Collider GetCollider() { return Collider(body); }
 
 protected:
 	bool isjumping;
@@ -19,9 +17,5 @@ protected:
 	bool playerInAir;
 	bool isgrounded;
 	float Ps = 1000;
-
-
-private:
-	sf::RectangleShape body;
 
 };
