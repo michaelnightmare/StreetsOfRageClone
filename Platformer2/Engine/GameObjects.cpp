@@ -3,6 +3,8 @@
 #include "Game.h"
 #include <iostream>
 #include <vector>
+#include "player.h"
+#include "Collider.h"
 
 GameObject::GameObject(std::string texturePath, sf::Vector2f pos)
 	: m_pos(pos)
@@ -32,7 +34,7 @@ GameObject::GameObject(std::string texturePath, sf::Vector2f pos)
 
 void GameObject::Update(sf::RenderWindow * window, float dt)
 {
-//	m_sprite.setPosition(m_pos);
+
 }
 
 
@@ -44,7 +46,7 @@ void GameObject::Draw(sf::RenderWindow * window)
 
 /////////////////////////////// PLAYER
 
-Player::Player(std::string texturePath,  sf::Vector2f pos)
+Player::Player(std::string texturePath, sf::Vector2f pos)
 	: GameObject(texturePath, pos)
 	, isjumping(false)
 	, jumpcd(0.0f)
@@ -57,6 +59,8 @@ Player::Player(std::string texturePath,  sf::Vector2f pos)
 {
 	
 	m_sprite.setOrigin(m_sprite.getTextureRect().width * 0.5f, m_sprite.getTextureRect().height * 0.5f);
+
+	
 	
 
 }
@@ -185,6 +189,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 void Player::Draw(sf::RenderWindow* window)
 {
 	GameObject::Draw(window);
+	window->draw(body);
 }
 
 
@@ -199,6 +204,7 @@ void Player::Draw(sf::RenderWindow* window)
 
 {
 	m_sprite.setOrigin(m_sprite.getTextureRect().width * 0.5f, m_sprite.getTextureRect().height * 0.5f);
+	
 
 }
 
@@ -235,6 +241,7 @@ bool  Platform::Collision(GameObject* obj)
  {
 	 GameObject::Draw(window);
 	 window->draw(m_sprite);
+	 window->draw(body);
  }
 
 

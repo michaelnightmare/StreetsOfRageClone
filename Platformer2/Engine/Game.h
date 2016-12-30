@@ -2,6 +2,7 @@
 #include "GameObjects.h"
 #include <vector>
 #include <SFML/Graphics.hpp>
+#include  "player.h"
 
 class Game
 {

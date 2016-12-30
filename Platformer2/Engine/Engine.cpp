@@ -43,6 +43,7 @@ int main()
         window.draw(background);
 		game.Update(&window, dt.asSeconds());
 		game.Draw(&window);
+
 		
 		window.display();
 	}
