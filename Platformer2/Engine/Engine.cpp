@@ -18,6 +18,7 @@ int main()
 	{
 		std::cout << "texture wont load";
 	}
+
 	sf::Sprite background;
 	background.setTexture(texture2);
 	background.setScale(4, 2);
@@ -28,10 +29,10 @@ int main()
 	{
 		sf::Time dt = clock.restart();
 
-		sf::Event event;
-		while (window.pollEvent(event))
+		sf::Event evnt;
+		while (window.pollEvent(evnt))
 		{
-			if (event.type == sf::Event::Closed)
+			if (evnt.type == sf::Event::Closed)
 				window.close();
 		}
 

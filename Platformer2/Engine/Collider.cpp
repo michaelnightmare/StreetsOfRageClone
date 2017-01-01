@@ -3,7 +3,6 @@
 Collider::Collider(sf::RectangleShape& body) :
 	body(body)
 {
-
 }
 
 Collider::~Collider()
@@ -52,12 +51,8 @@ bool Collider::CheckCollision(Collider & other, float push)
 				Move(0.0f , -intersectY * (1.0f - push));
 				other.Move(0.0f,intersectY * push);
 			}
-
 		}
-		
-
 		return true;
 	}
-
 	return false; 
 }

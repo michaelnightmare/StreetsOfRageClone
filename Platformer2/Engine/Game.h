@@ -2,7 +2,7 @@
 #include "GameObjects.h"
 #include <vector>
 #include <SFML/Graphics.hpp>
-#include  "player.h"
+#include  "Player.h"
 
 class Game
 {
@@ -14,15 +14,11 @@ public:
 
 	void AddObject(GameObject* obj);
 	std::vector<GameObject*> m_gameObjects;
-	
 
 private:
 	
 	Player* m_player;
 	Platform* m_platform;
-
-	
-
 	
 };
 
