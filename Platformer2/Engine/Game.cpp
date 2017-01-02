@@ -5,7 +5,7 @@
 Game::Game()
 {
 	
-	m_player = new Player("Sprites/PNG/AlienBlueFront.png", sf::Vector2f(150,175), sf::Vector2f(75, 300));
+	m_player = new Player("Sprites/PNG/AlienBlueFront.png", sf::Vector2f(200,200), sf::Vector2f(75, 100));
 	AddObject(m_player);
 
 	//ground

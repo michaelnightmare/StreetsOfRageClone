@@ -21,14 +21,10 @@ public:
 
 	Collider GetCollider() { return Collider(body); }
 	sf::Vector2f GetPosition() { return body.getPosition(); }
-
-	//OLD COLLISION, MIGHT NOT BE NECESSARY, REMOVE LATER IF NOT
 	virtual bool  Collision(GameObject* obj) { return false; }
-	//============================================================
 
-	//Should all be in private or protected
-	sf::Sprite m_sprite;
-	sf::Texture m_texture;
+
+
 	float Top;
 	float Bottom;
 	float Left;
@@ -43,6 +39,9 @@ protected:
 	sf::Vector2f m_vel;
 	sf::Vector2f m_accel;
 	sf::RectangleShape body;
+	sf::Sprite m_sprite;
+	sf::Texture m_texture;
+
 
 };
 

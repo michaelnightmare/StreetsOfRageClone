@@ -49,43 +49,12 @@ void Player::Update(sf::RenderWindow * window, float dt)
 
 	m_pos.x += m_movement.x;
 
-	//OLD COLLISION DETECTION, KEEPING AROUND UNTIL COLLISION METHOD IS SOLIDIFIED
-
-	//for (int i = 0; i < m_owner->m_gameObjects.size(); i++)
-	//{
-	//	GameObject* current = m_owner->m_gameObjects[i];
-	//	if (current != this)
-	//	{
-	//		if (current->Collision(this))
-	//		{
-	//			m_pos.x -= m_movement.x;
-	//			break;
-	//		}
-	//	}	
-	//}
-
+	
 	m_pos.y += m_movement.y;
 
 	isgrounded = false;
 
-	//OLD COLLISION DETECTION, KEEPING AROUND UNTIL COLLISION METHOD IS SOLIDIFIED
-	
-	//for (int i = 0; i < m_owner->m_gameObjects.size(); i++)
-	//{
-	//	GameObject* current = m_owner->m_gameObjects[i];
-	//	
-	//	if (current != this)
-	//	{
-	//		if (current->Collision(this))
-	//		{
-	//			m_pos.y -= m_movement.y;
-	//			m_vel.y = 0;
-	//			isgrounded = true; 
-	//		
-	//			break;
-	//		}
-	//	}
-	//}
+
 
 	body.setPosition(m_pos);
 }
