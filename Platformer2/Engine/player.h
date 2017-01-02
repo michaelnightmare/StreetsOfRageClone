@@ -6,7 +6,7 @@
 class Player : public GameObject
 {
 public:
-	Player(std::string texturePath, sf::Vector2f pos);
+	Player(std::string texturePath, sf::Vector2f size, sf::Vector2f pos);
 	void Draw(sf::RenderWindow* window);
 	virtual void Update(sf::RenderWindow* window, float dt);
 

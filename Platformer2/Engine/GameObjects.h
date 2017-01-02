@@ -13,33 +13,35 @@ class GameObject
 {
 public:
 	GameObject(std::string texturePath, sf::Vector2f size, sf::Vector2f pos );
-	virtual void SetPos(const sf::Vector2f& pos) { m_pos = pos; }
 	virtual void Draw(sf::RenderWindow* window);
 	virtual void Update(sf::RenderWindow* window, float dt);
+
 	const sf::Vector2f& GetPos() { return m_pos; }
 	void SetOwner(Game* game) { m_owner = game; }
-	virtual bool  Collision(GameObject* obj) { return false; };
-	const sf::Vector2f gravity;
-	sf::Sprite m_sprite;
-	sf::Texture m_texture;
-
-	float Top;
-	float Bottom;
-	float Left;
-	float Right;
 
 	Collider GetCollider() { return Collider(body); }
 	sf::Vector2f GetPosition() { return body.getPosition(); }
 
+	//OLD COLLISION, MIGHT NOT BE NECESSARY, REMOVE LATER IF NOT
+	virtual bool  Collision(GameObject* obj) { return false; }
+	//============================================================
+
+	//Should all be in private or protected
+	sf::Sprite m_sprite;
+	sf::Texture m_texture;
+	float Top;
+	float Bottom;
+	float Left;
+	float Right;
+	//============================================================
 
 protected:
 	Game* m_owner;
 	sf::Vector2f m_pos;
 	sf::Vector2f m_size;
-	sf::Color m_color;
 	sf::Vector2f m_movement;
 	sf::Vector2f m_vel;
-	sf::Vector2f accel;
+	sf::Vector2f m_accel;
 	sf::RectangleShape body;
 
 };

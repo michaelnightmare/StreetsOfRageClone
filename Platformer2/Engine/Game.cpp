@@ -5,11 +5,10 @@
 Game::Game()
 {
 	
-	m_player = new Player("Sprites/PNG/AlienBlueFront.png", sf::Vector2f(75, 300));
-
+	m_player = new Player("Sprites/PNG/AlienBlueFront.png", sf::Vector2f(150,175), sf::Vector2f(75, 300));
 	AddObject(m_player);
-	//ground
 
+	//ground
 	AddObject(new Platform("Sprites/PNG/grass.png", sf::Vector2f(130, 100), sf::Vector2f(50, 650), m_player));
 	AddObject(new Platform("Sprites/PNG/grass.png", sf::Vector2f(130, 100), sf::Vector2f(178, 650), m_player));
 	AddObject(new Platform("Sprites/PNG/grass.png", sf::Vector2f(130, 100), sf::Vector2f(306, 650), m_player));
@@ -19,8 +18,8 @@ Game::Game()
 	AddObject(new Platform("Sprites/PNG/grass.png", sf::Vector2f(130, 100), sf::Vector2f(818, 650), m_player));
 	AddObject(new Platform("Sprites/PNG/grass.png", sf::Vector2f(130, 100), sf::Vector2f(946, 650), m_player));
 
-
-	AddObject(new Platform("Sprites/PNG/grass.png", sf::Vector2f(100, 100), sf::Vector2f(400, 200), m_player));
+	//Floating platform
+	AddObject(new Platform("Sprites/PNG/grass.png", sf::Vector2f(130, 100), sf::Vector2f(400, 200), m_player));
 }
 
 void Game::Update(sf::RenderWindow * window, float dt)

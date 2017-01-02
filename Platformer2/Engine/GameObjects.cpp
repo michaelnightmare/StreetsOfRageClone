@@ -3,7 +3,7 @@
 #include "Game.h"
 #include <iostream>
 #include <vector>
-#include "player.h"
+#include "Player.h"
 #include "Collider.h"
 
 GameObject::GameObject(std::string texturePath, sf::Vector2f size, sf::Vector2f pos)
@@ -14,7 +14,7 @@ GameObject::GameObject(std::string texturePath, sf::Vector2f size, sf::Vector2f 
 	if (texturePath != "")
 	{
 		m_texture.loadFromFile(texturePath);
-		m_sprite.setTexture(m_texture);
+		//m_sprite.setTexture(m_texture);
 	}
 
 	Top = m_sprite.getPosition().y;
@@ -37,7 +37,7 @@ void GameObject::Update(sf::RenderWindow * window, float dt)
 
 void GameObject::Draw(sf::RenderWindow * window)
 {
-	window->draw(m_sprite);
+	window->draw(body);
 }
 
 ///////////////////////////// Platform
@@ -70,7 +70,7 @@ bool  Platform::Collision(GameObject* obj)
  void Platform::Draw(sf::RenderWindow* window)
  {
 	 GameObject::Draw(window);
-	 window->draw(body);
+	// window->draw(body);
  }
 
 
