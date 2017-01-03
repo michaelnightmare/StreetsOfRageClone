@@ -1,4 +1,4 @@
 ﻿  Player.cpp
-c:\users\micha\onedrive\documents\github\newplatformer\platformer2\engine\player.cpp(56): warning C4390: ';': empty controlled statement found; is this the intent?
-c:\users\micha\onedrive\documents\github\newplatformer\platformer2\engine\player.cpp(58): warning C4390: ';': empty controlled statement found; is this the intent?
-LINK : fatal error LNK1168: cannot open C:\Users\micha\OneDrive\Documents\GitHub\NEWPLATFORMER\Platformer2\Engine\x64\Debug\Engine.exe for writing
+c:\users\micha\onedrive\documents\github\newplatformer\platformer2\engine\player.cpp(63): warning C4390: ';': empty controlled statement found; is this the intent?
+  Engine.vcxproj -> C:\Users\micha\OneDrive\Documents\GitHub\NEWPLATFORMER\Platformer2\Engine\x64\Debug\Engine.exe
+  Engine.vcxproj -> C:\Users\micha\OneDrive\Documents\GitHub\NEWPLATFORMER\Platformer2\Engine\x64\Debug\Engine.pdb (Full PDB)

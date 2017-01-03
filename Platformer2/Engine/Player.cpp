@@ -1,5 +1,7 @@
 #include "Player.h"
 #include "Game.h"
+#include "GameObjects.h"
+#
 
 Player::Player(std::string texturePath, sf::Vector2f size, sf::Vector2f pos)
 	: GameObject(texturePath, size, pos)
@@ -49,9 +51,24 @@ void Player::Update(sf::RenderWindow * window, float dt)
 
 	m_pos.x += m_movement.x;
 
-	
-	m_pos.y += m_movement.y;
+	for (int i = 0; i < m_owner->m_gameObjects.size(); i++)
+		{
+			GameObject* current = m_owner->m_gameObjects[i];
+			Platform* platform = dynamic_cast<Platform*>(current);
 
+			if (platform)
+			{
+				if (this->GetCollider().CheckCollision(platform->GetCollider(), 1.0));
+				{
+					m_pos.y -= m_movement.y;
+					m_vel.y = 0;
+					isgrounded = true; 
+				
+					break;
+				}
+			}
+		}
+	m_pos.y += m_movement.y;
 	isgrounded = false;
 
 
