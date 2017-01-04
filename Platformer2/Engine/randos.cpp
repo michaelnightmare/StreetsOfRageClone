@@ -1,37 +1,26 @@
-//	Constrain to not go through platform
-//	if (Thomas.getPosition().x + Thomas.getSize().x > platform.getPosition().x )
-//	{
-//		Thomas.setFillColor(sf::Color::Blue);
-//	}
-//	else
-//	{
-//		Thomas.setFillColor(sf::Color::Green);
-//	}
-
-///*	if (Thomas.getPosition().y + Thomas.getSize().y > platform.getPosition().y)
-//	{
-//		Thomas.setFillColor(sf::Color::Blue);
-//	}
-//	else
-//	{
-//		Thomas.setFillColor(sf::Color::Green);
-//	}*/
-//	
-//	if (Thomas.getPosition().y + Thomas.getSize().y < platform.getPosition().y +platform.getSize().y)
-//	{
-//		Thomas.setFillColor(sf::Color::Blue);
-//	}
-//	else if(Thomas.getPosition().y + Thomas.getSize().y > platform.getPosition().y + platform.getSize().y)
-//	{
-//		Thomas.setFillColor(sf::Color::Green);
-//	}
-//	
-
 //OLD COLLISION, MIGHT NOT BE NECESSARY, REMOVE LATER IF NOT
 //virtual bool  Collision(GameObject* obj) { return false; }
 
-
 //OLD COLLISION DETECTION, KEEPING AROUND UNTIL COLLISION METHOD IS SOLIDIFIED
+
+
+//Top = m_sprite.getPosition().y;
+//Bottom = m_sprite.getPosition().y + m_sprite.getScale().y;
+//Right = m_sprite.getPosition().x + m_sprite.getScale().x;
+//Left = m_sprite.getPosition().x;
+
+//bool  Platform::Collision(GameObject* obj)
+//{
+//	if ((obj->GetPos().y + obj->Top > Top) &&
+//		(obj->GetPos().y  < Bottom) &&
+//		(obj->GetPos().x + obj->Bottom  > Left) &&
+//		(obj->GetPos().x < Right))
+//	{
+//		return true;
+//	}
+//
+//	return false;
+//}
 
 //for (int i = 0; i < m_owner->m_gameObjects.size(); i++)
 //{
@@ -64,3 +53,5 @@
 //		}
 //	}
 //}
+
+//m_sprite.setOrigin(m_sprite.getTextureRect().width * 0.5f, m_sprite.getTextureRect().height * 0.5f);

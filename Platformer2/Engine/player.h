@@ -6,17 +6,16 @@
 class Player : public GameObject
 {
 public:
+
 	Player(std::string texturePath, sf::Vector2f size, sf::Vector2f pos);
 	void Draw(sf::RenderWindow* window);
 	virtual void Update(sf::RenderWindow* window, float dt);
 
-
 protected:
-	bool isjumping;
-	float jumpcd;
-	bool playerInAir;
-	bool isgrounded;
-	float Ps = 1000;
 
+	float playerSpeed = 1000.f;
+	float jumpCooldown;
+	bool isjumping;
+	bool isgrounded;
 };
 

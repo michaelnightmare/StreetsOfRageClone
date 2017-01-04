@@ -17,11 +17,6 @@ GameObject::GameObject(std::string texturePath, sf::Vector2f size, sf::Vector2f 
 		//m_sprite.setTexture(m_texture);
 	}
 
-	Top = m_sprite.getPosition().y;
-	Bottom = m_sprite.getPosition().y + m_sprite.getScale().y;
-	Right = m_sprite.getPosition().x + m_sprite.getScale().x;
-	Left = m_sprite.getPosition().x;
-
 	body.setPosition(m_pos);
 	body.setSize(m_size);
 	body.setOrigin(m_size / 2.0f);
@@ -41,36 +36,31 @@ void GameObject::Draw(sf::RenderWindow * window)
 }
 
 ///////////////////////////// Platform
- Platform::Platform(std::string texturePath, sf::Vector2f size, sf::Vector2f pos, Player* player)
-	: GameObject("Sprites/PNG/grass.png", size, pos), m_player(player)
+ Platform::Platform(std::string texturePath, sf::Vector2f size, sf::Vector2f pos)
+	: GameObject("Sprites/PNG/grass.png", size, pos)
 {
-	//m_sprite.setOrigin(m_sprite.getTextureRect().width * 0.5f, m_sprite.getTextureRect().height * 0.5f);
 }
-
-bool  Platform::Collision(GameObject* obj)
- {
-	 if ((obj->GetPos().y + obj->Top > Top) && 
-		 (obj->GetPos().y  < Bottom) && 
-		 (obj->GetPos().x + obj->Bottom  > Left) &&
-		 (obj->GetPos().x < Right))
-	 {
-		 return true; 
-	 }
-
-	return false; 
- }
 
  void Platform::Update(sf::RenderWindow * window, float dt)
  {
 	 GameObject::Update(window, dt);
+	 
+	 //Check for collision with player
+	 for (int i = 0; i < m_owner->m_gameObjects.size(); i++)
+	 {
+		 GameObject* current = m_owner->m_gameObjects[i];
+		 Player* player = dynamic_cast<Player*>(current);
 
-	 this->GetCollider().CheckCollision(m_player->GetCollider(), 1.0f);
+		 if (player)
+		 {
+			 this->GetCollider().CheckCollision(player->GetCollider(), 1.0f);
+		 }
+	 }
  }
 
  void Platform::Draw(sf::RenderWindow* window)
  {
 	 GameObject::Draw(window);
-	// window->draw(body);
  }
 
 
