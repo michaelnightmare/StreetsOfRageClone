@@ -14,6 +14,11 @@ public:
 	sf::Vector2f GetPosition() {return body.getPosition(); }
 	sf::Vector2f GetHalfSize() { return body.getSize() / 2.0f; }
 
+	float Top;
+	float Bottom;
+	float Right;
+	float Left;
+
 private:
 	sf::RectangleShape& body;
 };

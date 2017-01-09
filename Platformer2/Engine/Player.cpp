@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Game.h"
 #include "GameObjects.h"
-#
+#include <iostream>
 
 Player::Player(std::string texturePath, sf::Vector2f size, sf::Vector2f pos)
 	: GameObject(texturePath, size, pos)
@@ -71,6 +71,8 @@ void Player::CollidedWith(GameObject * other)
 		m_movement.y = 0;
 		m_vel.y = 0;
 		isgrounded = true;
+
+		std::cout << "COLLISION HAPPENING!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
 	}
 }
 
