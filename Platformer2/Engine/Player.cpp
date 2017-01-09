@@ -19,7 +19,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	jumpCooldown -= dt;
 
 	//Account for gravity
-	sf::Vector2f gravity(0.0f, 5.f);
+	sf::Vector2f gravity(0.0f, 100.f);
 	m_accel = gravity;
 
 	//Check for movement commands
@@ -44,7 +44,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	{
 		//Player isn't on the ground anymore
 		isgrounded = false;
-		m_vel.y = -70.f;
+		m_vel.y = -300.f;
 
 		//Set cooldown for jump
 		jumpCooldown = 1.5f;
@@ -70,6 +70,7 @@ void Player::CollidedWith(GameObject * other)
 	{
 		m_movement.y = 0;
 		m_vel.y = 0;
+		isgrounded = true;
 	}
 }
 

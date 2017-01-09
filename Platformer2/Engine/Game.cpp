@@ -7,7 +7,7 @@
 
 Game::Game()
 {
-	m_player = new Player("Sprites/PNG/AlienBlueFront.png", sf::Vector2f(200,200), sf::Vector2f(75, 400));
+	m_player = new Player("Sprites/PNG/AlienBlueFront.png", sf::Vector2f(200,200), sf::Vector2f(75, 500));
 	AddObject(m_player);
 
 	//ground
@@ -41,6 +41,7 @@ void Game::Update(sf::RenderWindow * window, float dt)
 			if (current->GetCollider().CheckCollision(other->GetCollider()))
 			{
 				current->CollidedWith(other);
+				
 			}
 		}
 	}

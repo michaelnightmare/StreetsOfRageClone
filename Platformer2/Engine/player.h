@@ -14,7 +14,7 @@ public:
 
 protected:
 
-	float playerSpeed = 1000.f;
+	float playerSpeed = 500.f;
 	float jumpCooldown;
 	bool isjumping;
 	bool isgrounded;
