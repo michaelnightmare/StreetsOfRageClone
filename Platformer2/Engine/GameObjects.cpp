@@ -35,27 +35,36 @@ void GameObject::Draw(sf::RenderWindow * window)
 	window->draw(body);
 }
 
+void GameObject::CollidedWith(GameObject * other)
+{
+
+}
+
 ///////////////////////////// Platform
  Platform::Platform(std::string texturePath, sf::Vector2f size, sf::Vector2f pos)
 	: GameObject("Sprites/PNG/grass.png", size, pos)
 {
 }
 
- void Platform::Update(sf::RenderWindow * window, float dt)
+
+ void Platform::CollidedWith(GameObject * other)
  {
-	 GameObject::Update(window, dt);
-	 
-	 //Check for collision with player
-	 for (int i = 0; i < m_owner->m_gameObjects.size(); i++)
-	 {
-		 GameObject* current = m_owner->m_gameObjects[i];
-		 Player* player = dynamic_cast<Player*>(current);
+	
+		 Player* player = dynamic_cast<Player*>(other);
 
 		 if (player)
 		 {
 			 this->GetCollider().CheckCollision(player->GetCollider(), 1.0f);
 		 }
-	 }
+	 
+ }
+
+
+ void Platform::Update(sf::RenderWindow * window, float dt)
+ {
+	 GameObject::Update(window, dt);
+	 
+
  }
 
  void Platform::Draw(sf::RenderWindow* window)

@@ -17,9 +17,12 @@ public:
 
 	const sf::Vector2f& GetPos() { return m_pos; }
 	void SetOwner(Game* game) { m_owner = game; }
+	virtual void CollidedWith(GameObject* other);
+
 
 	Collider GetCollider() { return Collider(body); }
 	sf::Vector2f GetPosition() { return body.getPosition(); }
+	
 
 protected:
 
@@ -31,6 +34,7 @@ protected:
 	sf::Vector2f m_accel;
 	sf::RectangleShape body;
 	sf::Texture m_texture;
+
 };
 
 
@@ -43,5 +47,6 @@ public:
 	Platform (std::string texturePath, sf::Vector2f size, sf::Vector2f pos);
 	virtual void Draw(sf::RenderWindow* window);
 	virtual void Update(sf::RenderWindow* window, float dt);
+	virtual void CollidedWith(GameObject* other);
 };
 

@@ -67,7 +67,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 			Platform* platform = dynamic_cast<Platform*>(current);
 
 			//If it is a platform
-			if (platform)
+			if (platform )
 			{
 				//if player is colliding with platform
 

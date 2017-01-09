@@ -1,4 +1,6 @@
 ﻿  Player.cpp
-c:\users\cody\desktop\newplatformer\platformer2\engine\player.cpp(75): warning C4390: ';': empty controlled statement found; is this the intent?
-  Engine.vcxproj -> C:\Users\Cody\Desktop\NEWPLATFORMER\Platformer2\Engine\x64\Debug\Engine.exe
-  Engine.vcxproj -> C:\Users\Cody\Desktop\NEWPLATFORMER\Platformer2\Engine\x64\Debug\Engine.pdb (Full PDB)
+c:\users\micha\onedrive\documents\github\newplatformer\platformer2\engine\player.cpp(79): warning C4390: ';': empty controlled statement found; is this the intent?
+  GameObjects.cpp
+  Generating Code...
+  Engine.vcxproj -> C:\Users\micha\OneDrive\Documents\GitHub\NEWPLATFORMER\Platformer2\Engine\x64\Debug\Engine.exe
+  Engine.vcxproj -> C:\Users\micha\OneDrive\Documents\GitHub\NEWPLATFORMER\Platformer2\Engine\x64\Debug\Engine.pdb (Full PDB)

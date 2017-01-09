@@ -1,6 +1,9 @@
 #include "Game.h"
 #include <iostream>
 #include "SFML\Graphics.hpp"
+#include "GameObjects.h"
+#include "Collider.h"
+#
 
 Game::Game()
 {
@@ -29,6 +32,22 @@ void Game::Update(sf::RenderWindow * window, float dt)
 		GameObject* current = m_gameObjects[i];
 		current->Update(window, dt);
 	}
+
+	for (int i = 0; i < m_gameObjects.size(); i++)
+	{
+		GameObject* current = m_gameObjects[i];
+		for (int j = 0; j < m_gameObjects.size(); j++)
+		{
+			GameObject* other = m_gameObjects[j];
+			if (current->GetCollider().CheckCollision(other->GetCollider(), 1.0f))
+			{
+				current->CollidedWith(other);
+			}
+		}
+	}
+
+
+
 }
 
 void Game::Draw(sf::RenderWindow * window)
