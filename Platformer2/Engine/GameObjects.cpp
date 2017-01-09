@@ -49,22 +49,13 @@ void GameObject::CollidedWith(GameObject * other)
 
  void Platform::CollidedWith(GameObject * other)
  {
-	
-		 Player* player = dynamic_cast<Player*>(other);
 
-		 if (player)
-		 {
-			 this->GetCollider().CheckCollision(player->GetCollider(), 1.0f);
-		 }
-	 
  }
 
 
  void Platform::Update(sf::RenderWindow * window, float dt)
  {
 	 GameObject::Update(window, dt);
-	 
-
  }
 
  void Platform::Draw(sf::RenderWindow* window)

@@ -58,44 +58,19 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	m_pos.x += m_movement.x;
 	m_pos.y += m_movement.y;
 
-	//Check if player is colliding with a platform
-	for (int i = 0; i < m_owner->m_gameObjects.size(); i++)
-		{
-			GameObject* current = m_owner->m_gameObjects[i];
-			
-			//Check if current object is a platform
-			Platform* platform = dynamic_cast<Platform*>(current);
-
-			//If it is a platform
-			if (platform )
-			{
-				//if player is colliding with platform
-
-				// WHY IS THIS BEING SET TO TRUE EVERY LOOP EVEN WHEN THERES NO COLLISION????????
-
-				//The Reason Gravity isn't working (And he phases through the ground when it decides to work)
-
-				//===========================================================================================================
-				if (this->GetCollider().CheckCollision(platform->GetCollider(), 1.0f));
-				{
-					//Undo the y move
-					m_pos.y -= m_movement.y;
-
-					//Set velocity to 0 in the y
-					m_vel.y = 0;
-
-					//Player is on the ground
-					isgrounded = true;
-
-					break;
-				}
-				//===========================================================================================================
-			}
-			
-		}
-
 	//Set the body to the new position
 	body.setPosition(m_pos);
+}
+
+void Player::CollidedWith(GameObject * other)
+{
+	Platform* platform = dynamic_cast<Platform*>(other);
+
+	if (platform)
+	{
+		m_movement.y = 0;
+		m_vel.y = 0;
+	}
 }
 
 void Player::Draw(sf::RenderWindow* window)

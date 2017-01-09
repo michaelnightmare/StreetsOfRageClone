@@ -7,7 +7,6 @@
 
 Game::Game()
 {
-	
 	m_player = new Player("Sprites/PNG/AlienBlueFront.png", sf::Vector2f(200,200), sf::Vector2f(75, 400));
 	AddObject(m_player);
 
@@ -39,7 +38,7 @@ void Game::Update(sf::RenderWindow * window, float dt)
 		for (int j = 0; j < m_gameObjects.size(); j++)
 		{
 			GameObject* other = m_gameObjects[j];
-			if (current->GetCollider().CheckCollision(other->GetCollider(), 1.0f))
+			if (current->GetCollider().CheckCollision(other->GetCollider()))
 			{
 				current->CollidedWith(other);
 			}
