@@ -22,6 +22,8 @@ GameObject::GameObject(std::string texturePath, sf::Vector2f size, sf::Vector2f 
 	body.setOrigin(m_size / 2.0f);
 	body.setTexture(&m_texture);
 
+	body.setFillColor(sf::Color::Red);
+
 	m_vel.x = 0;
 	m_vel.y = 0;
 }
@@ -49,7 +51,7 @@ void GameObject::CollidedWith(GameObject * other)
 
  void Platform::CollidedWith(GameObject * other)
  {
-
+	
  }
 
 
