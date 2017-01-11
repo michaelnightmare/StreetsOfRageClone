@@ -16,15 +16,14 @@ Collider::~Collider()
 bool Collider::CheckCollision(Collider & other)
 {
 	// What I thought would be a better collision (typical Rect to Rect behavior)
-	// Have the Body in GameObjects constructer filling to Red,
 	// Rect size seems to match up, but strange behavior is still happening...
-	// For instance, made a cout in the player's collidedwith function... almost always colliding with platform
-	// Aside from when you move to far left of the screen, the top half seems to behave as it should.... MUST FIX
+	// -25 and +25 is to make the collision on bottom and top closer (for some reason roughly 25 pixels off)
+	// No idea why + 30 is needed for left side collisions but these make the collision closer for sure
 
-	if ((Left < other.Left + other.Right) &&
-		(Left + Right > other.Left) &&
-		(Top < other.Top + other.Bottom) &&
-		(Top + Bottom > other.Top))
+	if ((Left < other.Right + 10.f) &&
+		(Right > other.Left + 30.f) &&
+		(Top < other.Bottom - 25.f) &&
+		(Bottom > other.Top + 25.f))
 		{
 			return true;
 		}
