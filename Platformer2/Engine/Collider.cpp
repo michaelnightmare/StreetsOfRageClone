@@ -20,10 +20,10 @@ bool Collider::CheckCollision(Collider & other)
 	// -25 and +25 is to make the collision on bottom and top closer (for some reason roughly 25 pixels off)
 	// No idea why + 30 is needed for left side collisions but these make the collision closer for sure
 
-	if ((Left < other.Right + 10.f) &&
-		(Right > other.Left + 30.f) &&
-		(Top < other.Bottom - 25.f) &&
-		(Bottom > other.Top + 25.f))
+	if ((Left < other.Right ) &&
+		(Right > other.Left ) &&
+		(Top < other.Bottom ) &&
+		(Bottom > other.Top ))
 		{
 			return true;
 		}

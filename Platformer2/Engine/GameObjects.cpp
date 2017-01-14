@@ -7,7 +7,7 @@
 #include "Collider.h"
 
 GameObject::GameObject(std::string texturePath, sf::Vector2f size, sf::Vector2f pos)
-	: m_pos(pos), m_size(size)
+	: m_pos(pos)
 {
 	//m_sprite.setPosition(m_pos);
 
@@ -17,10 +17,14 @@ GameObject::GameObject(std::string texturePath, sf::Vector2f size, sf::Vector2f 
 		//m_sprite.setTexture(m_texture);
 	}
 
+	m_size.x = m_texture.getSize().x;
+	m_size.y = m_texture.getSize().y;
+
 	body.setPosition(m_pos);
 	body.setSize(m_size);
-	body.setOrigin(m_size / 2.0f);
+	//body.setOrigin(m_size / 2.0f);
 	body.setTexture(&m_texture);
+	body.setFillColor(sf::Color::Red);
 
 	m_vel.x = 0;
 	m_vel.y = 0;

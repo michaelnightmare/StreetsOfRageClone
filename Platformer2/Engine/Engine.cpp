@@ -38,7 +38,7 @@ int main()
 
 		window.clear();
 
-        window.draw(background);
+        //window.draw(background);
 		game.Update(&window, dt.asSeconds());
 		game.Draw(&window);
 

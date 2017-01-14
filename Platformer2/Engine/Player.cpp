@@ -57,6 +57,10 @@ void Player::Update(sf::RenderWindow * window, float dt)
 
 	m_pos.x += m_movement.x;
 	m_pos.y += m_movement.y;
+	if (isgrounded)
+	{
+		m_pos.y -= m_movement.y;
+	}
 
 	//Set the body to the new position
 	body.setPosition(m_pos);
@@ -68,11 +72,11 @@ void Player::CollidedWith(GameObject * other)
 
 	if (platform)
 	{
-		m_movement.y = 0;
-		m_vel.y = 0;
 		isgrounded = true;
-
-		std::cout << "COLLISION HAPPENING!!!!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
+	}
+	else 
+	{
+		isgrounded = false;
 	}
 }
 
