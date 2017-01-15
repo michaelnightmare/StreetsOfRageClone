@@ -14,7 +14,7 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(1000, 700), "Platformer!");
 
 	sf::Texture texture;
-	if (!texture.loadFromFile("Sprites/PNG/level.png"))
+	if (!texture.loadFromFile("Sprites/PNG/leveldark.png"))
 	{
 		std::cout << "texture wont load";
 	}
@@ -22,7 +22,7 @@ int main()
 	sf::Sprite background;
 	background.setTexture(texture);
 	background.setScale(4,2);
-	background.setPosition(0, -420.f);
+	background.setPosition(0, -312.f);
 	
 	sf::Clock clock;
 

@@ -11,7 +11,7 @@ class Game;
 class GameObject
 {
 public:
-	GameObject(std::string texturePath, sf::Vector2f size, sf::Vector2f pos );
+	GameObject(std::string texturePath, sf::Vector2f pos );
 	virtual void Draw(sf::RenderWindow* window);
 	virtual void Update(sf::RenderWindow* window, float dt);
 
@@ -44,7 +44,7 @@ class Platform : public GameObject
 {
 public:
 
-	Platform (std::string texturePath, sf::Vector2f size, sf::Vector2f pos);
+	Platform (std::string texturePath, sf::Vector2f pos);
 	virtual void Draw(sf::RenderWindow* window);
 	virtual void Update(sf::RenderWindow* window, float dt);
 	virtual void CollidedWith(GameObject* other);

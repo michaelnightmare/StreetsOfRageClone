@@ -6,7 +6,7 @@
 #include "Player.h"
 #include "Collider.h"
 
-GameObject::GameObject(std::string texturePath, sf::Vector2f size, sf::Vector2f pos)
+GameObject::GameObject(std::string texturePath, sf::Vector2f pos)
 	: m_pos(pos)
 {
 	//m_sprite.setPosition(m_pos);
@@ -22,6 +22,7 @@ GameObject::GameObject(std::string texturePath, sf::Vector2f size, sf::Vector2f 
 	body.setPosition(m_pos);
 	body.setSize(m_size);
 	body.setTexture(&m_texture);
+	
 
 	m_vel.x = 0;
 	m_vel.y = 0;
@@ -42,9 +43,10 @@ void GameObject::CollidedWith(GameObject * other)
 }
 
 ///////////////////////////// Platform
- Platform::Platform(std::string texturePath, sf::Vector2f size, sf::Vector2f pos)
-	: GameObject("Sprites/PNG/grass.png", size, pos)
+ Platform::Platform(std::string texturePath, sf::Vector2f pos)
+	: GameObject(texturePath,  pos)
 {
+	 body.setSize(sf::Vector2f(1000, 100));
 }
 
 

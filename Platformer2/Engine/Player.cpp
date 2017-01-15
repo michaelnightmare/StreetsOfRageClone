@@ -3,17 +3,34 @@
 #include "GameObjects.h"
 #include <iostream>
 
-Player::Player(std::string texturePath, sf::Vector2f size, sf::Vector2f pos)
-	: GameObject(texturePath, size, pos)
+Player::Player(std::string texturePath, sf::Vector2f pos)
+	: GameObject(texturePath, pos)
 	, isjumping(true)
 	, jumpCooldown(0.0f)
-	, isgrounded(false)
-{
+	, isgrounded(false) 
+{   
+
+	body.setTextureRect(sf::IntRect(10, 10, 50, 100));
+	body.setSize(sf::Vector2f(75,200));
+	
+	
+	
 }
 
 void Player::Update(sf::RenderWindow * window, float dt)
 {
 	GameObject::Update(window, dt);
+
+	//character cant leave the screen to the left
+	if (body.getPosition().x < 0)
+	{
+		m_pos = sf::Vector2f(0, body.getPosition().y);
+	}
+	//player cant jump out of the top of the screen
+	if (body.getPosition().y < 150)
+	{
+		m_pos = sf::Vector2f(body.getPosition().x, 150);
+	}
 
 	//Lower the jump cooldown
 	jumpCooldown -= dt;
