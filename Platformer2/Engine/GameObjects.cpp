@@ -14,7 +14,6 @@ GameObject::GameObject(std::string texturePath, sf::Vector2f size, sf::Vector2f 
 	if (texturePath != "")
 	{
 		m_texture.loadFromFile(texturePath);
-		//m_sprite.setTexture(m_texture);
 	}
 
 	m_size.x = m_texture.getSize().x;
@@ -22,9 +21,7 @@ GameObject::GameObject(std::string texturePath, sf::Vector2f size, sf::Vector2f 
 
 	body.setPosition(m_pos);
 	body.setSize(m_size);
-	//body.setOrigin(m_size / 2.0f);
 	body.setTexture(&m_texture);
-	body.setFillColor(sf::Color::Red);
 
 	m_vel.x = 0;
 	m_vel.y = 0;

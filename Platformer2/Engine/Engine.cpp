@@ -13,15 +13,16 @@ int main()
 
 	sf::RenderWindow window(sf::VideoMode(1000, 700), "Platformer!");
 
-	sf::Texture texture2;
-	if (!texture2.loadFromFile("Sprites/PNG/sky.png"))
+	sf::Texture texture;
+	if (!texture.loadFromFile("Sprites/PNG/level.png"))
 	{
 		std::cout << "texture wont load";
 	}
 
 	sf::Sprite background;
-	background.setTexture(texture2);
-	background.setScale(4, 2);
+	background.setTexture(texture);
+	background.setScale(4,2);
+	background.setPosition(0, -420.f);
 	
 	sf::Clock clock;
 
@@ -38,7 +39,7 @@ int main()
 
 		window.clear();
 
-        //window.draw(background);
+        window.draw(background);
 		game.Update(&window, dt.asSeconds());
 		game.Draw(&window);
 
