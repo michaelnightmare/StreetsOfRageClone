@@ -9,12 +9,8 @@ Player::Player(std::string texturePath, sf::Vector2f pos)
 	, jumpCooldown(0.0f)
 	, isgrounded(false) 
 {   
-
 	body.setTextureRect(sf::IntRect(10, 10, 50, 100));
 	body.setSize(sf::Vector2f(75,200));
-	
-	
-	
 }
 
 void Player::Update(sf::RenderWindow * window, float dt)
@@ -61,7 +57,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	{
 		//Player isn't on the ground anymore
 		isgrounded = false;
-		m_vel.y = -700.f ;
+		m_vel.y = -500.f ;
 
 		//Set cooldown for jump
 		jumpCooldown = 1.5f;
@@ -74,6 +70,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 
 	m_pos.x += m_movement.x;
 	m_pos.y += m_movement.y;
+
 	if (isgrounded)
 	{
 		m_pos.y -= m_movement.y;

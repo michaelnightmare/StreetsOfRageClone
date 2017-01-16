@@ -11,7 +11,9 @@ Game::Game()
 	AddObject(m_player);
 
 	//ground
-	AddObject(new Platform("Sprites/PNG/grounddark.png", sf::Vector2f(0, 640)));
+	AddObject(new Platform("Sprites/PNG/grounddark.png", sf::Vector2f(0, 650)));
+
+	playerView = new sf::View(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(550.0f, 550.0f));
 	
 
 	//Floating platform
@@ -51,6 +53,10 @@ void Game::Draw(sf::RenderWindow * window)
 		GameObject* current = m_gameObjects[i];
 		current->Draw(window);
 	}
+
+	playerView->setCenter(m_player->GetPosition());
+
+	window->setView(*playerView);
 }
 
 void Game::AddObject(GameObject * obj)

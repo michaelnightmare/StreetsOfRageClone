@@ -15,11 +15,6 @@ Collider::~Collider()
 
 bool Collider::CheckCollision(Collider & other)
 {
-	// What I thought would be a better collision (typical Rect to Rect behavior)
-	// Rect size seems to match up, but strange behavior is still happening...
-	// -25 and +25 is to make the collision on bottom and top closer (for some reason roughly 25 pixels off)
-	// No idea why + 30 is needed for left side collisions but these make the collision closer for sure
-
 	if ((Left < other.Right ) &&
 		(Right > other.Left ) &&
 		(Top < other.Bottom ) &&
@@ -29,9 +24,6 @@ bool Collider::CheckCollision(Collider & other)
 		}
 	
 	return false;
-
-	//Pushing this as is, if we need to swap back to the old method all the code is intact in Push Collision Function
-	// V V V V V V V V V V (take everything aside from the push behavior)
 }
 
 bool Collider::PushCollision(Collider & other, float push)

@@ -21,8 +21,8 @@ int main()
 
 	sf::Sprite background;
 	background.setTexture(texture);
-	background.setScale(4,2);
-	background.setPosition(0, -312.f);
+	background.setScale(3,2);
+	background.setPosition(0, -310.f);
 	
 	sf::Clock clock;
 

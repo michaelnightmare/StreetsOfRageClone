@@ -16,5 +16,6 @@ public:
 
 private:
 	Player* m_player;
+	sf::View* playerView;
 };
 
