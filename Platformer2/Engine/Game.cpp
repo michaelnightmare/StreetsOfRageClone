@@ -58,13 +58,14 @@ void Game::Draw(sf::RenderWindow * window)
 	
 	if (m_player->IsGrounded())
 	{
-playerView->setCenter(m_player->GetPosition());
-
+		playerView->setCenter(m_player->GetPosition());
 	}
 
 	else
 	{
-
+		//Need to update the x position to the player while keeping the player's old y pos
+		//Find a fix to this magic number that will definitely break further in the level
+		playerView->setCenter(m_player->GetPosition().x, 460.f);
 	}
 
 	
