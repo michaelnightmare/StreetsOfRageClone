@@ -23,6 +23,7 @@ public:
 	Collider GetCollider() { return Collider(body); }
 	sf::Vector2f GetPosition() { return body.getPosition(); }
 	
+	
 
 protected:
 

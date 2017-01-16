@@ -11,6 +11,7 @@ public:
 	void Draw(sf::RenderWindow* window);
 	virtual void Update(sf::RenderWindow* window, float dt);
 	virtual void CollidedWith(GameObject* other);
+	bool IsGrounded() { return isgrounded; }
 
 protected:
 

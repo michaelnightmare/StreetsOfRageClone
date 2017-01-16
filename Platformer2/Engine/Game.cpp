@@ -13,7 +13,7 @@ Game::Game()
 	//ground
 	AddObject(new Platform("Sprites/PNG/grounddark.png", sf::Vector2f(0, 650)));
 
-	playerView = new sf::View(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(550.0f, 550.0f));
+	playerView = new sf::View(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(550.0f, 750.0f));
 	
 
 	//Floating platform
@@ -22,7 +22,9 @@ Game::Game()
 
 void Game::Update(sf::RenderWindow * window, float dt)
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
+	
+	
+		for (int i = 0; i < m_gameObjects.size(); i++)
 	{
 		GameObject* current = m_gameObjects[i];
 		current->Update(window, dt);
@@ -53,8 +55,19 @@ void Game::Draw(sf::RenderWindow * window)
 		GameObject* current = m_gameObjects[i];
 		current->Draw(window);
 	}
+	
+	if (m_player->IsGrounded())
+	{
+playerView->setCenter(m_player->GetPosition());
 
-	playerView->setCenter(m_player->GetPosition());
+	}
+
+	else
+	{
+
+	}
+
+	
 
 	window->setView(*playerView);
 }
