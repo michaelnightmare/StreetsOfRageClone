@@ -11,7 +11,7 @@ Game::Game()
 	AddObject(m_player);
 
 	//ground
-	AddObject(new Platform("Sprites/PNG/grounddark.png", sf::Vector2f(0, 650)));
+	//AddObject(new Platform("Sprites/PNG/grounddark.png", sf::Vector2f(0, 650)));
 
 	playerView = new sf::View(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(550.0f, 750.0f));
 	

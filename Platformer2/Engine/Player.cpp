@@ -23,18 +23,40 @@ void Player::Update(sf::RenderWindow * window, float dt)
 		m_pos = sf::Vector2f(0, body.getPosition().y);
 	}
 	//player cant jump out of the top of the screen
-	if (body.getPosition().y < 150)
+	
+	if (body.getPosition().y < 150 )
 	{
 		m_pos = sf::Vector2f(body.getPosition().x, 150);
 	}
+	//player cant go below drawn level
+
+	if (body.getPosition().y > 462)
+	{
+		m_pos = sf::Vector2f(body.getPosition().x, 462);
+	}
+	//player cant go above street top
+
+
+	if (body.getPosition().y < 350 )
+	{
+		m_pos = sf::Vector2f(body.getPosition().x, 350);
+	}
+
+
+	if ((body.getPosition().y < 462) || (body.getPosition().y > 350))
+	{
+		isgrounded = true;
+		std::cout << "is grounded" << std::endl;
+	}
+
 
 	//Lower the jump cooldown
 	jumpCooldown -= dt;
 
 	//Account for gravity
-	sf::Vector2f gravity(0.0f, 600.f);
+	/*sf::Vector2f gravity(0.0f, 600.f);
 	m_accel = gravity ;
-
+*/
 	//Check for movement commands
 
 	sf::Vector2f  m_movement(0, 0);
@@ -51,9 +73,20 @@ void Player::Update(sf::RenderWindow * window, float dt)
 		m_movement.x = -playerSpeed * dt;
 	}
 
+	//Movement Up
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		m_movement.y = -playerSpeed * dt;
+	}
+	//Movement Down
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	{
+		m_movement.y = playerSpeed * dt;
+	}
+
 	//Jumping  
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && isgrounded || sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && isgrounded)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && isgrounded)
 	{
 		//Player isn't on the ground anymore
 		isgrounded = false;
@@ -71,10 +104,10 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	m_pos.x += m_movement.x;
 	m_pos.y += m_movement.y;
 
-	if (isgrounded)
-	{
-		m_pos.y -= m_movement.y;
-	}
+	//if (isgrounded)
+	//{
+	//	m_pos.y -= m_movement.y;
+	//}
 
 	//Set the body to the new position
 	body.setPosition(m_pos);
@@ -84,14 +117,14 @@ void Player::CollidedWith(GameObject * other)
 {
 	Platform* platform = dynamic_cast<Platform*>(other);
 
-	if (platform)
-	{
-		isgrounded = true;
-	}
-	else 
-	{
-		isgrounded = false;
-	}
+	//if (platform)
+	//{
+	//	isgrounded = true;
+	//}
+	//else 
+	//{
+	//	isgrounded = false;
+	//}
 }
 
 void Player::Draw(sf::RenderWindow* window)
