@@ -16,7 +16,7 @@ enum AnimationType
 class Animator
 {
 public:
-	Animator(GameObject); 
+	Animator(GameObject* AnimatedObj);
 	virtual void Update(sf::RenderWindow* window, float dt);
 
 	int GetRow() { return m_row; }
@@ -26,7 +26,7 @@ public:
 
 protected:
 
-
+	GameObject* owner;
 
 	float m_timeElapsed;
 	float m_timer;

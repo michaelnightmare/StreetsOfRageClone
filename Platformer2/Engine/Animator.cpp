@@ -4,16 +4,16 @@
 #include "Player.h"
 
 
-Animator::Animator(GameObject) 
+Animator::Animator(GameObject* AnimatedObj) : owner(AnimatedObj),
 
-: m_column(0), m_row(0), m_timer(0.35f), m_timeElapsed(0.f)
+m_column(0), m_row(0), m_timer(0.35f), m_timeElapsed(0.f)
 {
 }
 
 void Animator::Update(sf::RenderWindow* window, float dt)
 {
 	//Starts idle (base row = 0, base column = 0)
-	body.setTextureRect(sf::IntRect(m_column * 96, m_row * 96, 96, 96));
+	owner->body.setTextureRect(sf::IntRect(m_column * 96, m_row * 96, 96, 96));
 
 	LoopAnimation(dt);
 }
