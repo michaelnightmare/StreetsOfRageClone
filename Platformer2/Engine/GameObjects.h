@@ -22,7 +22,7 @@ public:
 
 	Collider GetCollider() { return Collider(body); }
 	sf::Vector2f GetPosition() { return body.getPosition(); }
-	
+	sf::RectangleShape body;
 	
 
 protected:
@@ -33,7 +33,7 @@ protected:
 	sf::Vector2f m_movement;
 	sf::Vector2f m_vel;
 	sf::Vector2f m_accel;
-	sf::RectangleShape body;
+	
 	sf::Texture m_texture;
 
 };
