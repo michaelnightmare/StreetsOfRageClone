@@ -13,7 +13,7 @@ Game::Game()
 	//ground
 	//AddObject(new Platform("Sprites/PNG/grounddark.png", sf::Vector2f(0, 650)));
 
-	playerView = new sf::View(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(550.0f, 750.0f));
+	playerView = new sf::View(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(512.0f, 512.0f));
 	
 
 	//Floating platform
@@ -58,15 +58,10 @@ void Game::Draw(sf::RenderWindow * window)
 	
 	if (m_player->IsGrounded())
 	{
-		playerView->setCenter(m_player->GetPosition());
+		playerView->setCenter(m_player->GetPosition().x, 400);
 	}
 
-	else
-	{
-		//Need to update the x position to the player while keeping the player's old y pos
-		//Find a fix to this magic number that will definitely break further in the level
-		playerView->setCenter(m_player->GetPosition().x, 460.f);
-	}
+	
 
 	
 
