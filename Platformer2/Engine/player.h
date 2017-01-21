@@ -20,7 +20,7 @@ public:
 protected:
 
 	Animator* anim;
-	float playerSpeed = 500.f;
+	float playerSpeed = 300.f;
 	float jumpCooldown;
 	bool isjumping;
 	bool isgrounded;

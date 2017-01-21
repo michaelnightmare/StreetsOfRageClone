@@ -7,7 +7,7 @@ enum AnimationType
 {
 	IDLE,
 	ATTACK,
-	DEFEND,
+	MORPH,
 	RUN,
 	HIT,
 	DEAD

@@ -24,12 +24,12 @@ int Animator::ChooseRow(AnimationType type)
 	{
 	case AnimationType::ATTACK:
 	{
-		return m_row = 4;
+		return m_row = 1;
 		break;
 	}
-	case AnimationType::DEFEND:
+	case AnimationType::MORPH:
 	{
-		return m_row = 1;
+		return m_row = 5;
 		break;
 	}
 
@@ -40,12 +40,12 @@ int Animator::ChooseRow(AnimationType type)
 	}
 	case AnimationType::RUN:
 	{
-		return m_row = 8;
+		return m_row = 3;
 		break;
 	}
 	case AnimationType::DEAD:
 	{
-		return m_row = 12;
+		return m_row = 4;
 		break;
 	}
 	default:
@@ -66,7 +66,7 @@ void Animator::LoopAnimation(float dt)
 		m_column++;
 	}
 
-	if (m_column > 2)
+	if (m_column > 5)
 
 	{
 		m_column = 0;

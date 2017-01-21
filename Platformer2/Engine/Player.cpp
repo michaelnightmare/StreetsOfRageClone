@@ -11,7 +11,7 @@ Player::Player(std::string texturePath, sf::Vector2f pos)
 	, isgrounded(false) 
 {   
 
-	body.setSize(sf::Vector2f(100,250));
+	body.setSize(sf::Vector2f(200,250));
 	anim = new Animator(this);
 }
 
@@ -63,6 +63,7 @@ void Player::HandleInput(sf::Vector2f & movement, float dt)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
 		movement.x = playerSpeed * dt;
+		anim->ChooseRow(AnimationType::RUN);
 	}
 
 	//Movement to the left
@@ -81,6 +82,27 @@ void Player::HandleInput(sf::Vector2f & movement, float dt)
 	{
 		movement.y = playerSpeed * dt;
 	}
+
+	//Movement ATTACK
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::K) || sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	{
+		anim->ChooseRow(AnimationType::ATTACK);
+	}
+
+	//Movement DEATH
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::P) || sf::Mouse::isButtonPressed(sf::Mouse::Right))
+	{
+		anim->ChooseRow(AnimationType::DEAD);
+	}
+
+	//Movement MORPH
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::L) )
+	{
+		anim->ChooseRow(AnimationType::MORPH);
+	}
+
+	
+
 
 	//Jumping  
 
@@ -123,7 +145,7 @@ void Player::Restrain()
 	}
 
 	//Restraiing to the street- Checking isgrounded
-	if ((body.getPosition().y < 462) || (body.getPosition().y > 350))
+	if ((body.getPosition().y < 410) || (body.getPosition().y > 300))
 	{
 		isgrounded = true;
 		std::cout << "is grounded" << std::endl;
