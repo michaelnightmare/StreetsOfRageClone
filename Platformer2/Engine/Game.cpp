@@ -7,7 +7,7 @@
 
 Game::Game()
 {
-	m_player = new Player("Sprites/PNG/Werewolfdark.png", sf::Vector2f(75, 460));
+	m_player = new Player("Sprites/PNG/WOLFSPRITESHEET.png", sf::Vector2f(75, 410));
 	AddObject(m_player);
 
 	//ground
