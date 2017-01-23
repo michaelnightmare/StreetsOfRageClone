@@ -22,7 +22,7 @@ public:
 	int GetRow() { return m_row; }
 
 	int ChooseRow(AnimationType type);
-	void LoopAnimation(float dt);
+	void LoopAnimation(float dt, int framecount);
 
 protected:
 
@@ -33,4 +33,5 @@ protected:
 
 	int m_column;
 	int m_row;
+	int framecount;
 };

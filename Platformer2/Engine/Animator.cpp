@@ -15,7 +15,7 @@ void Animator::Update(sf::RenderWindow* window, float dt)
 	//Starts idle (base row = 0, base column = 0)
 	owner->body.setTextureRect(sf::IntRect(m_column * 128, m_row * 128, 128, 128));
 
-	LoopAnimation(dt);
+	LoopAnimation(dt,framecount);
 }
 
 int Animator::ChooseRow(AnimationType type)
@@ -24,11 +24,13 @@ int Animator::ChooseRow(AnimationType type)
 	{
 	case AnimationType::ATTACK:
 	{
+		framecount = 5;
 		return m_row = 1;
 		break;
 	}
 	case AnimationType::MORPH:
 	{
+		framecount = 5;
 		return m_row = 5;
 		break;
 	}
@@ -40,23 +42,26 @@ int Animator::ChooseRow(AnimationType type)
 	}
 	case AnimationType::RUN:
 	{
+		framecount = 5;
 		return m_row = 3;
 		break;
 	}
 	case AnimationType::DEAD:
 	{
+		framecount = 5;
 		return m_row = 4;
 		break;
 	}
 	default:
 	{
+		framecount = 5;
 		return m_row = 0;
 		break;
 	}
 	}
 }
 
-void Animator::LoopAnimation(float dt)
+void Animator::LoopAnimation(float dt,int framecount)
 {
 	m_timeElapsed -= dt;
 
@@ -66,7 +71,7 @@ void Animator::LoopAnimation(float dt)
 		m_column++;
 	}
 
-	if (m_column > 5)
+	if (m_column > framecount)
 
 	{
 		m_column = 0;
