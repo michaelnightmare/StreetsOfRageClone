@@ -37,7 +37,8 @@ int Animator::ChooseRow(AnimationType type)
 
 	case AnimationType::HIT:
 	{
-		return m_row = 3;
+		framecount = 6;
+		return m_row = 6;
 		break;
 	}
 	case AnimationType::RUN:
@@ -50,6 +51,12 @@ int Animator::ChooseRow(AnimationType type)
 	{
 		framecount = 5;
 		return m_row = 4;
+		break;
+	}
+	case AnimationType::SPECIAL:
+	{
+		framecount = 5;
+		return m_row = 7;
 		break;
 	}
 	default:

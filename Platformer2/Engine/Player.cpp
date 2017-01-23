@@ -100,8 +100,16 @@ void Player::HandleInput(sf::Vector2f & movement, float dt)
 	{
 		anim->ChooseRow(AnimationType::MORPH);
 	}
-
-	
+	//Movement HIT
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::O))
+	{
+		anim->ChooseRow(AnimationType::HIT);
+	}
+	//Movement SPECIAL
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
+	{
+		anim->ChooseRow(AnimationType::SPECIAL);
+	}
 
 
 	//Jumping  

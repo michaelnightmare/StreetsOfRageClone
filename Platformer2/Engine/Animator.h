@@ -9,6 +9,7 @@ enum AnimationType
 	ATTACK,
 	MORPH,
 	RUN,
+	SPECIAL,
 	HIT,
 	DEAD
 };
