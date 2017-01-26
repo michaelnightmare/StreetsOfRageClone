@@ -33,13 +33,8 @@ GameObject::GameObject(std::string texturePath, sf::Vector2f pos)
 
 void GameObject::Update(sf::RenderWindow * window, float dt)
 {
-	CalculateDepth(m_depth);
-
-	
-	
-
+	m_depth = CalculateDepth(m_depth);
 	std::cout << m_depth << std::endl;
-	/*m_pos.y = m_depth * 60;*/
 }
 
 void GameObject::Draw(sf::RenderWindow * window)

@@ -6,12 +6,10 @@
 
 Player::Player(std::string texturePath, sf::Vector2f pos)
 	: GameObject(texturePath, pos)
-	, isjumping(true)
-	, jumpCooldown(0.0f)
-	, isgrounded(false)
-
+	, isjumping(false)
+	, jumpCooldown(0.1f)
+	, isgrounded(true)
 {   
-
 	body.setSize(sf::Vector2f(200,250));
 	anim = new Animator(this);
 }
@@ -33,7 +31,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 
 	sf::Vector2f  m_movement(0, 0);
 
-	HandleInput(m_movement,dt);
+	HandleInput(m_movement, dt);
 	
 	m_vel += m_accel * dt;
 	m_movement += m_vel * dt;
@@ -54,7 +52,7 @@ void Player::CollidedWith(GameObject * other)
 {
 }
 
-void Player::HandleInput(sf::Vector2f & movement, float dt)
+void Player::HandleInput(sf::Vector2f& movement, float dt)
 {
 	//Movement to the right
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
@@ -72,12 +70,13 @@ void Player::HandleInput(sf::Vector2f & movement, float dt)
 	//Movement Up
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		m_movement.y= m_depth += -playerSpeedz * dt;
+		movement.y = m_depth - playerSpeedz * dt;
 	}
+
 	//Movement Down
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		m_movement.y = m_depth += playerSpeedz * dt ;
+		movement.y = m_depth + playerSpeedz * dt ;
 	}
 
 	//Movement ATTACK
@@ -97,32 +96,30 @@ void Player::HandleInput(sf::Vector2f & movement, float dt)
 	{
 		anim->ChooseRow(AnimationType::MORPH);
 	}
+
 	//Movement HIT
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::O))
 	{
 		anim->ChooseRow(AnimationType::HIT);
 	}
+
 	//Movement SPECIAL
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
 	{
 		anim->ChooseRow(AnimationType::SPECIAL);
 	}
 
-
 	//Jumping  
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && isgrounded)
 	{
 		//Player isn't on the ground anymore
-	
+		isgrounded = false;
 		m_vel.y = -500.f;
 
 		//Set cooldown for jump
 		jumpCooldown = 1.5f;
 	}
-
-	
-
 }
 
 void Player::Restrain()
@@ -131,31 +128,6 @@ void Player::Restrain()
 	if (body.getPosition().x < -35)
 	{
 		m_pos = sf::Vector2f(-35, body.getPosition().y);
-	}
-
-	//player cant jump out of the top of the screen
-	if (body.getPosition().y < 150)
-	{
-		m_pos = sf::Vector2f(body.getPosition().x, 150);
-	}
-
-	//player cant go below drawn level
-	if (body.getPosition().y > 410)
-	{
-		m_pos = sf::Vector2f(body.getPosition().x, 410);
-	}
-
-	//player cant go above street top
-	if (body.getPosition().y < 300)
-	{
-		m_pos = sf::Vector2f(body.getPosition().x, 300);
-	}
-
-	//Restraiing to the street- Checking isgrounded
-	if ((m_depth <= 410) || (m_depth >= 300))
-	{
-		isgrounded = true;
-	
 	}
 }
 

@@ -55,10 +55,7 @@ void Game::Draw(sf::RenderWindow * window)
 		current->Draw(window);
 	}
 	
-	if (m_player->IsGrounded())
-	{
-		playerView->setCenter(m_player->GetPosition().x + 70.f, 400);
-	}
+	playerView->setCenter(m_player->GetPosition().x + 70.f, 400);
 
 	window->setView(*playerView);
 }
