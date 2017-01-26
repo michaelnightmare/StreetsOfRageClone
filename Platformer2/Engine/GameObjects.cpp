@@ -39,7 +39,7 @@ void GameObject::Update(sf::RenderWindow * window, float dt)
 	
 
 	std::cout << m_depth << std::endl;
-	//m_pos.y = m_depth * 60;
+	/*m_pos.y = m_depth * 60;*/
 }
 
 void GameObject::Draw(sf::RenderWindow * window)

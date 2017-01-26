@@ -8,7 +8,8 @@ Player::Player(std::string texturePath, sf::Vector2f pos)
 	: GameObject(texturePath, pos)
 	, isjumping(true)
 	, jumpCooldown(0.0f)
-	, isgrounded(false) 
+	, isgrounded(false)
+
 {   
 
 	body.setSize(sf::Vector2f(200,250));
@@ -41,12 +42,8 @@ void Player::Update(sf::RenderWindow * window, float dt)
 
 	m_pos.x += m_movement.x;
 	m_pos.y += m_movement.y;
-
-	//if (isgrounded)
-	//{
-	//	m_pos.y -= m_movement.y;
-	//}
-
+	
+	/*m_pos.y = m_depth * 50 - jumpHeight;*/
 	anim->Update(window, dt);
 
 	//Set the body to the new position
@@ -75,12 +72,12 @@ void Player::HandleInput(sf::Vector2f & movement, float dt)
 	//Movement Up
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		movement.y = -playerSpeed * dt;
+		m_movement.y= m_depth += -playerSpeedz * dt;
 	}
 	//Movement Down
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		movement.y = playerSpeed * dt;
+		m_movement.y = m_depth += playerSpeedz * dt ;
 	}
 
 	//Movement ATTACK
@@ -117,12 +114,14 @@ void Player::HandleInput(sf::Vector2f & movement, float dt)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && isgrounded)
 	{
 		//Player isn't on the ground anymore
-		isgrounded = false;
+	
 		m_vel.y = -500.f;
 
 		//Set cooldown for jump
 		jumpCooldown = 1.5f;
 	}
+
+	
 
 }
 
@@ -153,9 +152,10 @@ void Player::Restrain()
 	}
 
 	//Restraiing to the street- Checking isgrounded
-	if ((body.getPosition().y < 410) || (body.getPosition().y > 300))
+	if ((m_depth <= 410) || (m_depth >= 300))
 	{
 		isgrounded = true;
+	
 	}
 }
 
