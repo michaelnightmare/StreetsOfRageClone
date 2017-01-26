@@ -156,7 +156,6 @@ void Player::Restrain()
 	if ((body.getPosition().y < 410) || (body.getPosition().y > 300))
 	{
 		isgrounded = true;
-		std::cout << "is grounded" << std::endl;
 	}
 }
 

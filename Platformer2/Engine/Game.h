@@ -14,6 +14,8 @@ public:
 	void AddObject(GameObject* obj);
 	std::vector<GameObject*> m_gameObjects;
 
+
+
 private:
 	Player* m_player;
 	sf::View* playerView;

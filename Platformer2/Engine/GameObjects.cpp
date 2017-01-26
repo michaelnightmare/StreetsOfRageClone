@@ -26,10 +26,29 @@ GameObject::GameObject(std::string texturePath, sf::Vector2f pos)
 
 	m_vel.x = 0;
 	m_vel.y = 0;
+
+	//Setting default position to the bottom of the screen, set in Child's constructor
+	m_depth = 0.f;
 }
 
 void GameObject::Update(sf::RenderWindow * window, float dt)
 {
+	if (m_pos.y <= 300.f)
+	{
+		m_depth = 1.f;
+	}
+	if (m_pos.y >= 410)
+	{
+		m_depth = 0.f;
+	}
+
+	else
+	{
+		m_depth = 
+	}
+
+	std::cout << m_depth << std::endl;
+	//m_pos.y = m_depth * 60;
 }
 
 void GameObject::Draw(sf::RenderWindow * window)
@@ -42,29 +61,7 @@ void GameObject::CollidedWith(GameObject * other)
 
 }
 
-///////////////////////////// Platform
- Platform::Platform(std::string texturePath, sf::Vector2f pos)
-	: GameObject(texturePath,  pos)
-{
-	 body.setSize(sf::Vector2f(1000, 100));
-}
 
-
- void Platform::CollidedWith(GameObject * other)
- {
-	
- }
-
-
- void Platform::Update(sf::RenderWindow * window, float dt)
- {
-	 GameObject::Update(window, dt);
- }
-
- void Platform::Draw(sf::RenderWindow* window)
- {
-	 GameObject::Draw(window);
- }
 
 
  

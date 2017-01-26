@@ -33,21 +33,10 @@ protected:
 	sf::Vector2f m_movement;
 	sf::Vector2f m_vel;
 	sf::Vector2f m_accel;
+
+	//Position in the 'Z' (height on the road)
+	float m_depth;
 	
 	sf::Texture m_texture;
 
 };
-
-
-
-class Platform : public GameObject
-
-{
-public:
-
-	Platform (std::string texturePath, sf::Vector2f pos);
-	virtual void Draw(sf::RenderWindow* window);
-	virtual void Update(sf::RenderWindow* window, float dt);
-	virtual void CollidedWith(GameObject* other);
-};
-

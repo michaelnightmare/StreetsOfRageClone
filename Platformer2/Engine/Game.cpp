@@ -10,26 +10,29 @@ Game::Game()
 	m_player = new Player("Sprites/PNG/WOLFSPRITESHEET.png", sf::Vector2f(75, 410));
 	AddObject(m_player);
 
-	//ground
-	//AddObject(new Platform("Sprites/PNG/grounddark.png", sf::Vector2f(0, 650)));
-
 	playerView = new sf::View(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(512.0f, 512.0f));
-	
-
-	//Floating platform
-	//AddObject(new Platform("Sprites/PNG/grass.png",  sf::Vector2f(400, 200)));
 }
 
 void Game::Update(sf::RenderWindow * window, float dt)
 {
-	
-	
-		for (int i = 0; i < m_gameObjects.size(); i++)
+	//Destroy loop
+	//for (int i = 0; i < m_gameObjects.size(); i++)
+	//{
+	//	GameObject* current = m_gameObjects[i];
+	//	if (current->IsDestroyed())
+	//	{
+	//		current->Destroy();
+	//	}
+	//}
+
+	//Update loop
+	for (int i = 0; i < m_gameObjects.size(); i++)
 	{
 		GameObject* current = m_gameObjects[i];
 		current->Update(window, dt);
 	}
 
+	//Collision Loop
 	for (int i = 0; i < m_gameObjects.size(); i++)
 	{
 		GameObject* current = m_gameObjects[i];
@@ -39,13 +42,9 @@ void Game::Update(sf::RenderWindow * window, float dt)
 			if (current->GetCollider().CheckCollision(other->GetCollider()))
 			{
 				current->CollidedWith(other);
-				
 			}
 		}
 	}
-
-
-
 }
 
 void Game::Draw(sf::RenderWindow * window)
@@ -58,12 +57,8 @@ void Game::Draw(sf::RenderWindow * window)
 	
 	if (m_player->IsGrounded())
 	{
-		playerView->setCenter(m_player->GetPosition().x, 400);
+		playerView->setCenter(m_player->GetPosition().x + 70.f, 400);
 	}
-
-	
-
-	
 
 	window->setView(*playerView);
 }

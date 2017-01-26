@@ -1,57 +1,42 @@
-//OLD COLLISION, MIGHT NOT BE NECESSARY, REMOVE LATER IF NOT
-//virtual bool  Collision(GameObject* obj) { return false; }
 
-//OLD COLLISION DETECTION, KEEPING AROUND UNTIL COLLISION METHOD IS SOLIDIFIED
+//Formula for scaling bars (exp, health, mana, etc)
 
+//currLength = ((current_HP * barLength) / max_HP);
 
-//Top = m_sprite.getPosition().y;
-//Bottom = m_sprite.getPosition().y + m_sprite.getScale().y;
-//Right = m_sprite.getPosition().x + m_sprite.getScale().x;
-//Left = m_sprite.getPosition().x;
+//Currently not in use 
+//=================================================================
+//class Platform : public GameObject
 
-//bool  Platform::Collision(GameObject* obj)
 //{
-//	if ((obj->GetPos().y + obj->Top > Top) &&
-//		(obj->GetPos().y  < Bottom) &&
-//		(obj->GetPos().x + obj->Bottom  > Left) &&
-//		(obj->GetPos().x < Right))
-//	{
-//		return true;
-//	}
-//
-//	return false;
+//public:
+
+//	Platform(std::string texturePath, sf::Vector2f pos);
+//	virtual void Draw(sf::RenderWindow* window);
+//	virtual void Update(sf::RenderWindow* window, float dt);
+//	virtual void CollidedWith(GameObject* other);
+//};
+//=================================================================
+
+///////////////////////////// Platform
+//Platform::Platform(std::string texturePath, sf::Vector2f pos)
+//	: GameObject(texturePath, pos)
+//{
+//	body.setSize(sf::Vector2f(1000, 100));
 //}
 
-//for (int i = 0; i < m_owner->m_gameObjects.size(); i++)
+
+//void Platform::CollidedWith(GameObject * other)
 //{
-//	GameObject* current = m_owner->m_gameObjects[i];
-//	if (current != this)
-//	{
-//		if (current->Collision(this))
-//		{
-//			m_pos.x -= m_movement.x;
-//			break;
-//		}
-//	}	
+
 //}
 
-//OLD COLLISION DETECTION, KEEPING AROUND UNTIL COLLISION METHOD IS SOLIDIFIED
 
-//for (int i = 0; i < m_owner->m_gameObjects.size(); i++)
+//void Platform::Update(sf::RenderWindow * window, float dt)
 //{
-//	GameObject* current = m_owner->m_gameObjects[i];
-//	
-//	if (current != this)
-//	{
-//		if (current->Collision(this))
-//		{
-//			m_pos.y -= m_movement.y;
-//			m_vel.y = 0;
-//			isgrounded = true; 
-//		
-//			break;
-//		}
-//	}
+//	GameObject::Update(window, dt);
 //}
 
-//m_sprite.setOrigin(m_sprite.getTextureRect().width * 0.5f, m_sprite.getTextureRect().height * 0.5f);
+//void Platform::Draw(sf::RenderWindow* window)
+//{
+//	GameObject::Draw(window);
+//}
