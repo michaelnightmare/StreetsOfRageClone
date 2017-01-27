@@ -39,7 +39,8 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	//Add any movement to the player
 
 	m_pos.x += m_movement.x;
-	m_pos.y += m_movement.y;
+	m_pos.y += m_depth * 110;
+	
 	
 	/*m_pos.y = m_depth * 50 - jumpHeight;*/
 	anim->Update(window, dt);
@@ -70,13 +71,13 @@ void Player::HandleInput(sf::Vector2f& movement, float dt)
 	//Movement Up
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		movement.y = m_depth - playerSpeedz * dt;
+		m_depth += -playerSpeedz *dt ;
 	}
 
 	//Movement Down
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		movement.y = m_depth + playerSpeedz * dt ;
+		 m_depth +=  playerSpeedz *dt ;
 	}
 
 	//Movement ATTACK

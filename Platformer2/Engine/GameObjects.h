@@ -32,6 +32,7 @@ protected:
 	sf::Vector2f m_pos;
 	sf::Vector2f m_size;
 	sf::Vector2f m_movement;
+	sf::Vector2f m_depthmovement;
 	sf::Vector2f m_vel;
 	sf::Vector2f m_accel;
 

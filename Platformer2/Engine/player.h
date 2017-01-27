@@ -21,7 +21,7 @@ protected:
 
 	Animator* anim;
 	float playerSpeed = 300.f;
-	float playerSpeedz = 0.2f;
+	float playerSpeedz = 100.f;
 	float jumpHeight= 200; 
 	float jumpCooldown;
 	bool isjumping;
