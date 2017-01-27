@@ -14,15 +14,14 @@ public:
 	virtual void CollidedWith(GameObject* other);
 	bool IsGrounded() { return isgrounded; }
 
-	void HandleInput(sf::Vector2f & movement, float dt);
+	void HandleInput(float dt);
 	void Restrain();
 
 protected:
 
 	Animator* anim;
 	float playerSpeed = 300.f;
-	float playerSpeedz = 100.f;
-	float jumpHeight= 200; 
+	float jumpHeight = 200.f; 
 	float jumpCooldown;
 	bool isjumping;
 	bool isgrounded;

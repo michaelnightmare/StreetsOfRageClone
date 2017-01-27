@@ -11,6 +11,7 @@ class Game;
 class GameObject
 {
 public:
+
 	GameObject(std::string texturePath, sf::Vector2f pos );
 	virtual void Draw(sf::RenderWindow* window);
 	virtual void Update(sf::RenderWindow* window, float dt);
@@ -18,14 +19,13 @@ public:
 	const sf::Vector2f& GetPos() { return m_pos; }
 	void SetOwner(Game* game) { m_owner = game; }
 	virtual void CollidedWith(GameObject* other);
-	float CalculateDepth(float& depth);
+	void CalculateDepth();
 
 
 	Collider GetCollider() { return Collider(body); }
 	sf::Vector2f GetPosition() { return body.getPosition(); }
 	sf::RectangleShape body;
 	
-
 protected:
 
 	Game* m_owner;

@@ -28,10 +28,11 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	m_accel = gravity ;*/
 
 	//Check for movement commands
+	//Start by zeroing out m_movement
+	m_movement.x = 0.f;
+	m_movement.y = 0.f;
 
-	sf::Vector2f  m_movement(0, 0);
-
-	HandleInput(m_movement, dt);
+	HandleInput(dt);
 	
 	m_vel += m_accel * dt;
 	m_movement += m_vel * dt;
@@ -39,8 +40,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	//Add any movement to the player
 
 	m_pos.x += m_movement.x;
-	m_pos.y += m_depth * 110;
-	
+	m_pos.y += m_movement.y;
 	
 	/*m_pos.y = m_depth * 50 - jumpHeight;*/
 	anim->Update(window, dt);
@@ -53,31 +53,31 @@ void Player::CollidedWith(GameObject * other)
 {
 }
 
-void Player::HandleInput(sf::Vector2f& movement, float dt)
+void Player::HandleInput(float dt)
 {
 	//Movement to the right
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
-		movement.x = playerSpeed * dt;
+		m_movement.x = playerSpeed * dt;
 		anim->ChooseRow(AnimationType::RUN);
 	}
 
 	//Movement to the left
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
-		movement.x = -playerSpeed * dt;
+		m_movement.x = -playerSpeed * dt;
 	}
 
 	//Movement Up
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		m_depth += -playerSpeedz *dt ;
+		m_movement.y = -playerSpeed *dt ;
 	}
 
 	//Movement Down
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		 m_depth +=  playerSpeedz *dt ;
+		m_movement.y = playerSpeed *dt;
 	}
 
 	//Movement ATTACK
@@ -111,7 +111,6 @@ void Player::HandleInput(sf::Vector2f& movement, float dt)
 	}
 
 	//Jumping  
-
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && isgrounded)
 	{
 		//Player isn't on the ground anymore
@@ -128,7 +127,17 @@ void Player::Restrain()
 	//character cant leave the screen to the left
 	if (body.getPosition().x < -35)
 	{
-		m_pos = sf::Vector2f(-35, body.getPosition().y);
+		m_pos.x = -35;
+	}
+
+	if (body.getPosition().y < 300.f)
+	{
+		m_pos.y = 300.f;
+	}
+
+	if (body.getPosition().y > 410.f)
+	{
+		m_pos.y = 410.f;
 	}
 }
 

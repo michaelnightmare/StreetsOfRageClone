@@ -33,7 +33,7 @@ GameObject::GameObject(std::string texturePath, sf::Vector2f pos)
 
 void GameObject::Update(sf::RenderWindow * window, float dt)
 {
-	m_depth = CalculateDepth(m_depth);
+	CalculateDepth();
 	std::cout << m_depth << std::endl;
 }
 
@@ -47,14 +47,12 @@ void GameObject::CollidedWith(GameObject * other)
 
 }
 
-float GameObject::CalculateDepth(float& depth)
+void GameObject::CalculateDepth()
 {
 	float min = 410.f;
 	float max = 300.f;
 
 	m_depth = (m_pos.y - min) / (max - min);
-
-	return m_depth;
 }
 
 
