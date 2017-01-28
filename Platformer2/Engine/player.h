@@ -21,7 +21,7 @@ protected:
 
 	Animator* anim;
 	float playerSpeed = 300.f;
-	float jumpHeight = 200.f; 
+	float jumpHeight = 0.f; 
 	float jumpCooldown;
 	bool isjumping;
 	bool isgrounded;

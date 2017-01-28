@@ -19,7 +19,6 @@ public:
 	const sf::Vector2f& GetPos() { return m_pos; }
 	void SetOwner(Game* game) { m_owner = game; }
 	virtual void CollidedWith(GameObject* other);
-	void CalculateDepth();
 
 
 	Collider GetCollider() { return Collider(body); }
