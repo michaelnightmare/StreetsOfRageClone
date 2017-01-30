@@ -10,9 +10,11 @@ Player::Player(std::string texturePath, sf::Vector2f pos)
 	, jumpCooldown(0.1f)
 	, isgrounded(true)
 	, jumpHeight(0.f)
+	
 {   
 	body.setSize(sf::Vector2f(200,250));
 	anim = new Animator(this);
+	m_depth = 0.5f;
 }
 
 void Player::Update(sf::RenderWindow * window, float dt)
@@ -33,10 +35,13 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	if (isgrounded)
 	{
 		gravity = 0.f;
+	
 	}
 	else //Player is in the air, apply said gravity
 	{
-		gravity = 1000.f;
+		gravity = -100.f * dt;
+
+		
 	}
 
 	//Add gravity into acceleration
@@ -68,13 +73,14 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	m_pos.x += m_movement.x;
 
 	//y pos = depth * -roadHeight + min (top of road) plus the height of the jump
-	m_pos.y = m_depth * -110 + 410 + jumpHeight;
+	m_pos.y = m_depth * -110 + 410 - jumpHeight;
 	//=======================================================
 
 	//Clamp jumpHeight
 	if (jumpHeight >= 0)
 	{
 		jumpHeight = 0.f;
+		
 	}
 
 	//Check if player is on the ground
@@ -113,12 +119,14 @@ void Player::HandleInput(float dt)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
 		m_movement.y = playerSpeed *dt ;
+	
 	}
 
 	//Movement Down
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
 		m_movement.y = -playerSpeed *dt;
+		
 	}
 
 	//Movement ATTACK
@@ -130,9 +138,11 @@ void Player::HandleInput(float dt)
 	//Jumping  
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && isgrounded)
 	{
+		
 		//Player isn't on the ground anymore
 		isgrounded = false;
-		jumpHeight = -200.f;
+		jumpHeight = 150.f;
+		
 
 		std::cout << "Jumped";
 

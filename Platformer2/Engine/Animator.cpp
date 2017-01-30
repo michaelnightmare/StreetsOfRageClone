@@ -59,6 +59,7 @@ int Animator::ChooseRow(AnimationType type)
 		return m_row = 7;
 		break;
 	}
+	
 	default:
 	{
 		framecount = 5;
