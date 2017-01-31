@@ -7,7 +7,7 @@
 Player::Player(std::string texturePath, sf::Vector2f pos)
 	: GameObject(texturePath, pos)
 	, isjumping(false)
-	, jumpCooldown(0.1f)
+	, jumpCooldown(0.0f)
 	, isgrounded(true)
 	, jumpHeight(0.f)
 	
@@ -26,7 +26,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 
 	//Lower the jump cooldown
 	jumpCooldown -= dt;
-	jumpHeight += dt;
+	
 
 	//Account for gravity
 	float gravity;
@@ -67,27 +67,36 @@ void Player::Update(sf::RenderWindow * window, float dt)
 
 	if (m_depth >= 1.f)
 		m_depth = 1.f;
+
 	if (m_depth <= 0.f)
-		m_depth = 0.f;
+		m_depth = 0.0f;
+	
 
 	m_pos.x += m_movement.x;
 
 	//y pos = depth * -roadHeight + min (top of road) plus the height of the jump
 	m_pos.y = m_depth * -110 + 410 - jumpHeight;
+	jumpHeight += gravity;
+	
+	
 	//=======================================================
 
 	//Clamp jumpHeight
-	if (jumpHeight >= 0)
+	if (jumpHeight <= 0)
 	{
 		jumpHeight = 0.f;
 		
 	}
+
 
 	//Check if player is on the ground
 	if (jumpHeight == 0)
 	{
 		isgrounded = true;
 	}
+
+	
+	std::cout << jumpHeight << std::endl;
 
 	//Update the animator
 	anim->Update(window, dt);
@@ -136,12 +145,13 @@ void Player::HandleInput(float dt)
 	}
 
 	//Jumping  
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && isgrounded)
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && isgrounded && jumpCooldown <= 0.0f )
 	{
 		
 		//Player isn't on the ground anymore
 		isgrounded = false;
-		jumpHeight = 150.f;
+		jumpHeight = 150.f ;
+		
 		
 
 		std::cout << "Jumped";
