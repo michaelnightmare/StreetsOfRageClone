@@ -29,23 +29,24 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	
 
 	//Account for gravity
-	float gravity;
+	sf::Vector2f gravity(0.0f,0.0f);
 	
 	//If player is on the ground dont apply gravity
 	if (isgrounded)
 	{
-		gravity = 0.f;
+		
+		gravity.y = 0.f;
 	
 	}
 	else //Player is in the air, apply said gravity
 	{
-		gravity = -100.f * dt;
+		gravity.y = -100.f * dt;
 
 		
 	}
 
 	//Add gravity into acceleration
-	m_accel.y += gravity;
+	m_accel.y += gravity.y;
 
 	//Check for movement commands
 	//Start by zeroing out m_movement
@@ -57,7 +58,8 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	
 	//Add acceleration to velocity, then add the velocity to movement
 	m_vel += m_accel * dt;
-	m_movement += m_vel * dt;
+	m_movement += m_vel * dt; 
+	
 
 	//Add any movement to the player
 
@@ -76,7 +78,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 
 	//y pos = depth * -roadHeight + min (top of road) plus the height of the jump
 	m_pos.y = m_depth * -110 + 410 - jumpHeight;
-	jumpHeight += gravity;
+	jumpHeight += gravity.y;
 	
 	
 	//=======================================================
@@ -94,9 +96,14 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	{
 		isgrounded = true;
 	}
-
 	
-	std::cout << jumpHeight << std::endl;
+
+	m_vel = m_vel + gravity * dt;
+
+	if (m_vel.y = 0)
+	{
+		isgrounded = true;
+	}
 
 	//Update the animator
 	anim->Update(window, dt);
@@ -128,6 +135,7 @@ void Player::HandleInput(float dt)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
 		m_movement.y = playerSpeed *dt ;
+		
 	
 	}
 
@@ -135,6 +143,7 @@ void Player::HandleInput(float dt)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
 		m_movement.y = -playerSpeed *dt;
+		
 		
 	}
 
@@ -150,8 +159,8 @@ void Player::HandleInput(float dt)
 		
 		//Player isn't on the ground anymore
 		isgrounded = false;
-		jumpHeight = 150.f ;
-		
+		jumpHeight = m_vel.y + 150.f;
+	
 		
 
 		std::cout << "Jumped";
