@@ -6,11 +6,13 @@
 enum AnimationType
 {
 	IDLE,
+	INTRO,
 	ATTACK,
 	MORPH,
 	RUN,
+	RUNL,
 	SPECIAL,
-
+	JUMP,
 	HIT,
 	DEAD
 };
@@ -25,6 +27,7 @@ public:
 
 	int ChooseRow(AnimationType type);
 	void LoopAnimation(float dt, int framecount);
+	bool flip;
 
 protected:
 
@@ -32,7 +35,7 @@ protected:
 
 	float m_timeElapsed;
 	float m_timer;
-
+   
 	int m_column;
 	int m_row;
 	int framecount;

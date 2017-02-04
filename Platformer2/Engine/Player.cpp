@@ -15,6 +15,7 @@ Player::Player(std::string texturePath, sf::Vector2f pos)
 	body.setSize(sf::Vector2f(200,250));
 	anim = new Animator(this);
 	m_depth = 0.5f;
+	anim->ChooseRow(AnimationType::INTRO);
 }
 
 void Player::Update(sf::RenderWindow * window, float dt)
@@ -40,7 +41,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	}
 	else //Player is in the air, apply said gravity
 	{
-		gravity.y = -100.f * dt;
+		gravity.y = -300.f * dt;
 
 		
 	}
@@ -122,14 +123,25 @@ void Player::HandleInput(float dt)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
 		m_movement.x = playerSpeed * dt;
-		anim->ChooseRow(AnimationType::RUN);
+
+		if (isgrounded)
+		{
+			anim->ChooseRow(AnimationType::RUN);
+		}
 	}
 
 	//Movement to the left
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
+		 
 		m_movement.x = -playerSpeed * dt;
+		if (isgrounded)
+		{
+			
+			anim->ChooseRow(AnimationType::RUNL);
+		}
 	}
+	
 
 	//Movement Up
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
@@ -156,7 +168,7 @@ void Player::HandleInput(float dt)
 	//Jumping  
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && isgrounded && jumpCooldown <= 0.0f )
 	{
-		
+		anim->ChooseRow(AnimationType::JUMP);
 		//Player isn't on the ground anymore
 		isgrounded = false;
 		jumpHeight = m_vel.y + 150.f;
@@ -166,7 +178,7 @@ void Player::HandleInput(float dt)
 		std::cout << "Jumped";
 
 		//Set cooldown for jump
-		jumpCooldown = 1.5f;
+		jumpCooldown = 1.0f;
 	}
 }
 
