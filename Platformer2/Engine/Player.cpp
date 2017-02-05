@@ -1,6 +1,8 @@
 #include "Player.h"
 #include "Game.h"
 #include "GameObjects.h"
+#include "StateMachine.h"
+#include "StandingState.h"
 #include <iostream>
 #include "Animator.h"
 
@@ -14,6 +16,11 @@ Player::Player(std::string texturePath, sf::Vector2f pos)
 {   
 	body.setSize(sf::Vector2f(200,250));
 	anim = new Animator(this);
+
+	//Init state machine and declare starting state
+	m_stateMachine = new StateMachine(this);
+	m_stateMachine->SetCurrentState(StandingState::Instance());
+
 	m_depth = 0.5f;
 	anim->ChooseRow(AnimationType::INTRO);
 }
@@ -28,22 +35,17 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	//Lower the jump cooldown
 	jumpCooldown -= dt;
 	
-
 	//Account for gravity
 	sf::Vector2f gravity(0.0f,0.0f);
 	
 	//If player is on the ground dont apply gravity
 	if (isgrounded)
 	{
-		
 		gravity.y = 0.f;
-	
 	}
 	else //Player is in the air, apply said gravity
 	{
 		gravity.y = -300.f * dt;
-
-		
 	}
 
 	//Add gravity into acceleration
@@ -74,23 +76,18 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	if (m_depth <= 0.f)
 		m_depth = 0.0f;
 	
-
 	m_pos.x += m_movement.x;
 
-	//y pos = depth * -roadHeight + min (top of road) plus the height of the jump
+	//y pos = depth * -roadHeight + (top of road) minus jumpHeight
 	m_pos.y = m_depth * -110 + 410 - jumpHeight;
 	jumpHeight += gravity.y;
-	
-	
 	//=======================================================
 
 	//Clamp jumpHeight
 	if (jumpHeight <= 0)
 	{
 		jumpHeight = 0.f;
-		
 	}
-
 
 	//Check if player is on the ground
 	if (jumpHeight == 0)
@@ -98,13 +95,14 @@ void Player::Update(sf::RenderWindow * window, float dt)
 		isgrounded = true;
 	}
 	
-
 	m_vel = m_vel + gravity * dt;
 
 	if (m_vel.y = 0)
 	{
 		isgrounded = true;
 	}
+	//Update the state machine
+	m_stateMachine->Update();
 
 	//Update the animator
 	anim->Update(window, dt);
@@ -172,8 +170,6 @@ void Player::HandleInput(float dt)
 		//Player isn't on the ground anymore
 		isgrounded = false;
 		jumpHeight = m_vel.y + 150.f;
-	
-		
 
 		std::cout << "Jumped";
 

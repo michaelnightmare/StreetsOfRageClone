@@ -3,6 +3,7 @@
 #include <SFML\Graphics.hpp>
 
 class Animator;
+class StateMachine;
 
 class Player : public GameObject
 {
@@ -20,6 +21,7 @@ public:
 protected:
 
 	Animator* anim;
+	StateMachine* m_stateMachine;
 	float playerSpeed = 300.f;
 	float jumpHeight = 0.f; 
 	float jumpCooldown;

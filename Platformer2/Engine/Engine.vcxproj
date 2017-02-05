@@ -160,6 +160,9 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObjects.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="StandingState.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateMachine.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -171,6 +174,7 @@
     <ClCompile Include="GameObjects.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="randos.cpp" />
+    <ClCompile Include="StandingState.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
