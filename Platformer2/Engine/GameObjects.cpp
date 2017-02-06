@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "Player.h"
+#include "Enemy.h"
 #include "Collider.h"
 
 GameObject::GameObject(std::string texturePath, sf::Vector2f pos)

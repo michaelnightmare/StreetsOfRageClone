@@ -3,6 +3,7 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include  "Player.h"
+#include "Enemy.h"
 
 class Game
 {
@@ -19,5 +20,6 @@ public:
 private:
 	Player* m_player;
 	sf::View* playerView;
+	Enemy* m_enemy;
 };
 

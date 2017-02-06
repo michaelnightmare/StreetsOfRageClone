@@ -10,6 +10,8 @@ Game::Game()
 	m_player = new Player("Sprites/PNG/WOLFSPRITESHEET.png", sf::Vector2f(75, 410));
 	AddObject(m_player);
 
+	m_enemy = new Enemy("Sprites/PNG/ZombieSheet.png", sf::Vector2f(250, 410));
+	AddObject(m_enemy);
 
 	playerView = new sf::View(sf::Vector2f(0.0f, 0.0f), sf::Vector2f(512.0f, 512.0f));
 }
