@@ -25,6 +25,9 @@
     <Filter Include="Source Files\States">
       <UniqueIdentifier>{cedbaef3-4dda-4eea-9e01-c41ba73a536a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameClasses\Useless">
+      <UniqueIdentifier>{8c6e5056-2879-457a-8014-24b96f262073}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -65,12 +68,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="randos.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -94,6 +91,12 @@
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files\GameClasses\Useless</Filter>
+    </ClCompile>
+    <ClCompile Include="randos.cpp">
+      <Filter>Source Files\GameClasses\Useless</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

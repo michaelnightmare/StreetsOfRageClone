@@ -1,27 +1,20 @@
 #include "Animator.h"
-#include "GameObjects.h"
 #include <iostream>
-#include "Player.h"
 
 
 Animator::Animator(GameObject* AnimatedObj) : owner(AnimatedObj),
 
 m_column(0), m_row(0), m_timer(0.15f), m_timeElapsed(0.f)
 {
-	flip = false; 
+	
 }
 
 void Animator::Update(sf::RenderWindow* window, float dt)
 {
 	//Starts idle (base row = 0, base column = 0)
-	if (flip)
-	{
-		owner->body.setTextureRect(sf::IntRect(m_column * 128, m_row * 128, -128, 128));
-	}
-	else
-	{
+	
 		owner->body.setTextureRect(sf::IntRect(m_column * 128, m_row * 128, 128, 128));
-	}
+	
 	LoopAnimation(dt,framecount);
 }
 
@@ -62,10 +55,10 @@ int Animator::ChooseRow(AnimationType type)
 		return m_row = 3;
 		break;
 	}
-	case AnimationType::RUNL :
+	case AnimationType::RUNL:
 	{
-		flip = true;
-		framecount = 5;
+		
+		framecount = 7;
 		return m_row = 3;
 		break;
 	}
@@ -89,9 +82,15 @@ int Animator::ChooseRow(AnimationType type)
 		break;
 	}
 	
-	default:
+	case AnimationType::IDLE:
 	{
-		framecount = 5;
+		framecount = 6;
+		return m_row = 0;
+		break;
+	}
+	case AnimationType::ENEMYIDLE:
+	{
+		framecount = 0;
 		return m_row = 0;
 		break;
 	}

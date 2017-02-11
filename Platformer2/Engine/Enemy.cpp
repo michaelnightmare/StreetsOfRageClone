@@ -1,9 +1,8 @@
 #include "Enemy.h"
-#include "Game.h"
-#include "GameObjects.h"
-
 #include <iostream>
 #include "Animator.h"
+#include "StateMachine.h"
+#include "StandingState.h"
 
 Enemy::Enemy(std::string texturePath, sf::Vector2f pos)
 	: GameObject(texturePath, pos)
@@ -13,10 +12,11 @@ Enemy::Enemy(std::string texturePath, sf::Vector2f pos)
 	, jumpHeight(0.f)
 
 {
-	body.setSize(sf::Vector2f(2750, 2750));
+	body.setSize(sf::Vector2f(225, 225));
 
-
-
+	anim = new Animator(this);
+	m_stateMachine = new StateMachine(this);
+	m_stateMachine->SetCurrentState(StandingState::Instance());
 
 	m_depth = 0.5f;
 	
@@ -99,6 +99,11 @@ void Enemy::Update(sf::RenderWindow * window, float dt)
 		isgrounded = true;
 	}
 
+	//Update state
+	m_stateMachine->Update();
+
+	//Update animator
+	anim->Update(window, dt);
 
 	//Set the body to the new position
 	body.setPosition(m_pos);
@@ -111,32 +116,29 @@ void Enemy::CollidedWith(GameObject * other)
 void Enemy::HandleInput(float dt)
 {
 	//Movement to the right
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad6))
 	{
 		m_movement.x = enemySpeed * dt;
-
-	
+		anim->ChooseRow(AnimationType::RUNL);
 	}
+	
 
 	//Movement to the left
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad4))
 	{
-
 		m_movement.x = -enemySpeed * dt;
-	
+		anim->ChooseRow(AnimationType::RUNL);
 	}
 
 
 	//Movement Up
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad8))
 	{
 		m_movement.y = enemySpeed *dt;
-
-
 	}
 
 	//Movement Down
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad2))
 	{
 		m_movement.y = -enemySpeed *dt;
 
@@ -144,10 +146,11 @@ void Enemy::HandleInput(float dt)
 	}
 
 	//Movement ATTACK
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::K) || sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad5))
 	{
-		
+		anim->ChooseRow(AnimationType::DEAD);
 	}
+	
 
 	//Jumping  
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && isgrounded && jumpCooldown <= 0.0f)
@@ -162,6 +165,7 @@ void Enemy::HandleInput(float dt)
 		//Set cooldown for jump
 		jumpCooldown = 1.0f;
 	}
+	
 }
 
 void Enemy::Restrain()

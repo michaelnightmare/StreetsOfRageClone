@@ -122,6 +122,9 @@ void Player::HandleInput(float dt)
 	{
 		m_movement.x = playerSpeed * dt;
 
+		//When running state is added... delete the anim line and uncomment this line
+		//m_stateMachine->ChangeState(RunningState::Instance());
+
 		if (isgrounded)
 		{
 			anim->ChooseRow(AnimationType::RUN);
@@ -136,7 +139,7 @@ void Player::HandleInput(float dt)
 		if (isgrounded)
 		{
 			
-			anim->ChooseRow(AnimationType::RUNL);
+			anim->ChooseRow(AnimationType::RUN);
 		}
 	}
 	

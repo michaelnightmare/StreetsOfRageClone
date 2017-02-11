@@ -1,11 +1,11 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "GameObjects.h"
-#include "Player.h"
 
 enum AnimationType
 {
 	IDLE,
+	ENEMYIDLE,
 	INTRO,
 	ATTACK,
 	MORPH,
@@ -27,8 +27,7 @@ public:
 
 	int ChooseRow(AnimationType type);
 	void LoopAnimation(float dt, int framecount);
-	bool flip;
-
+	
 protected:
 
 	GameObject* owner;
