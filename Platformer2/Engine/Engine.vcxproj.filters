@@ -66,6 +66,9 @@
     <ClInclude Include="Enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Approach.h">
+      <Filter>Header Files\GameClasses</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">

@@ -5,6 +5,7 @@
 #include "StandingState.h"
 #include <iostream>
 #include "Animator.h"
+#include "Approach.h"
 
 Player::Player(std::string texturePath, sf::Vector2f pos)
 	: GameObject(texturePath, pos)
@@ -117,6 +118,8 @@ void Player::CollidedWith(GameObject * other)
 
 void Player::HandleInput(float dt)
 {
+	//KEY PRESSED
+	//---------------------------------------------
 	//Movement to the right
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
@@ -179,6 +182,9 @@ void Player::HandleInput(float dt)
 		//Set cooldown for jump
 		jumpCooldown = 1.0f;
 	}
+
+
+
 }
 
 void Player::Restrain()
