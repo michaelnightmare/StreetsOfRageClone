@@ -50,7 +50,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	}
 
 	//Add gravity into acceleration
-	m_accel.y += gravity.y;
+	m_accel.y = gravity.y;
 
 	//Check for movement commands
 	//Start by zeroing out m_movement
@@ -61,7 +61,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	HandleInput(dt);
 	
 	//Add acceleration to velocity, then add the velocity to movement
-	m_vel += m_accel * dt;
+
 	m_movement += m_vel * dt; 
 	
 
@@ -79,8 +79,9 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	
 	m_pos.x += m_movement.x;
 
-	//y pos = depth * -roadHeight + (top of road) minus jumpHeight
+	
 	m_pos.y = m_depth * -110 + 410 - jumpHeight;
+
 	jumpHeight += gravity.y;
 	//=======================================================
 
@@ -96,7 +97,7 @@ void Player::Update(sf::RenderWindow * window, float dt)
 		isgrounded = true;
 	}
 	
-	m_vel = m_vel + gravity * dt;
+	m_vel += gravity * dt;
 
 	if (m_vel.y = 0)
 	{
