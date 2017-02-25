@@ -66,6 +66,15 @@ void Player::Update(sf::RenderWindow * window, float dt)
 	
 
 	//Add any movement to the player
+	if (isjumping)
+	{
+		jumpHeight += 3000 * dt;
+	}
+
+	if (jumpHeight >= 150.f)
+	{
+		isjumping = false; 
+	}
 
 	//THIS BEHAVIOR SHOULD LIVE IN GAMEOBJECT
 	//======================================================
@@ -175,8 +184,9 @@ void Player::HandleInput(float dt)
 	{
 		anim->ChooseRow(AnimationType::JUMP);
 		//Player isn't on the ground anymore
+		isjumping = true; 
 		isgrounded = false;
-		jumpHeight = m_vel.y + 150.f;
+		
 
 		std::cout << "Jumped";
 
