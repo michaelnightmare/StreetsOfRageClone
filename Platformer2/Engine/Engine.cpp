@@ -19,6 +19,11 @@ int main()
 		std::cout << "texture wont load";
 	}
 
+	sf::Music Music;
+	Music.openFromFile("Audio/Music.wav");
+	Music.play();
+	Music.setLoop(true);
+
 	sf::Sprite background;
 	background.setTexture(texture);
 	background.setScale(3,2);

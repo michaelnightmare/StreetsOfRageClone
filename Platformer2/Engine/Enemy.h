@@ -18,6 +18,10 @@ public:
 	void HandleInput(float dt);
 	void Restrain();
 
+	sf::SoundBuffer ZombieDBuffer;
+	sf::Sound ZombieDSound;
+
+
 protected:
 
 	Animator* anim;

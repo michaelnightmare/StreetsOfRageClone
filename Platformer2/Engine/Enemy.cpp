@@ -19,6 +19,12 @@ Enemy::Enemy(std::string texturePath, sf::Vector2f pos)
 	m_stateMachine->SetCurrentState(StandingState::Instance());
 
 	m_depth = 0.5f;
+
+	ZombieDSound.setBuffer(ZombieDBuffer);
+	if (!ZombieDBuffer.loadFromFile("Audio/ZombieD.wav"))
+	{
+		std::cout << "error";
+	}
 	
 }
 
@@ -149,6 +155,7 @@ void Enemy::HandleInput(float dt)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad5))
 	{
 		anim->ChooseRow(AnimationType::DEAD);
+		ZombieDSound.play();
 	}
 	
 

@@ -17,6 +17,13 @@ public:
 
 	void HandleInput(float dt);
 	void Restrain();
+	sf::SoundBuffer PunchBuffer;
+	sf::Sound PunchSound;
+	sf::SoundBuffer TransformBuffer;
+	sf::Sound TransformSound;
+	sf::SoundBuffer JumpBuffer;
+	sf::Sound JumpSound;
+
 
 protected:
 

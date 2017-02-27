@@ -23,7 +23,27 @@ Player::Player(std::string texturePath, sf::Vector2f pos)
 	m_stateMachine->SetCurrentState(StandingState::Instance());
 
 	m_depth = 0.5f;
+
+	PunchSound.setBuffer(PunchBuffer);
+	if (!PunchBuffer.loadFromFile("Audio/Punch.wav"))
+	{
+		std::cout << "error";
+	}
+
+	TransformSound.setBuffer(TransformBuffer);
+	if (!TransformBuffer.loadFromFile("Audio/Transform.wav"))
+	{
+		std::cout << "error";
+	}	
+
+	JumpSound.setBuffer(JumpBuffer);
+	if (!JumpBuffer.loadFromFile("Audio/Jump.wav"))
+	{
+		std::cout << "error";
+	}
+
 	anim->ChooseRow(AnimationType::INTRO);
+	TransformSound.play();
 }
 
 void Player::Update(sf::RenderWindow * window, float dt)
@@ -177,12 +197,14 @@ void Player::HandleInput(float dt)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::K) || sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
 		anim->ChooseRow(AnimationType::ATTACK);
+		PunchSound.play();
 	}
 
 	//Jumping  
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && isgrounded && jumpCooldown <= 0.0f )
 	{
 		anim->ChooseRow(AnimationType::JUMP);
+		JumpSound.play();
 		//Player isn't on the ground anymore
 		isjumping = true; 
 		isgrounded = false;

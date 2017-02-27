@@ -1,3 +1,11 @@
 ﻿  Player.cpp
-  Engine.vcxproj -> C:\Users\aicaoc\Desktop\NEWPLATFORMER\Platformer2\Engine\x64\Debug\Engine.exe
-  Engine.vcxproj -> C:\Users\aicaoc\Desktop\NEWPLATFORMER\Platformer2\Engine\x64\Debug\Engine.pdb (Full PDB)
+  Generating Code...
+  Compiling...
+  GameObjects.cpp
+c:\users\micha\onedrive\documents\github\newplatformer\platformer2\engine\gameobjects.cpp(20): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
+c:\users\micha\onedrive\documents\github\newplatformer\platformer2\engine\gameobjects.cpp(21): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
+  Game.cpp
+  Engine.cpp
+  Generating Code...
+  Engine.vcxproj -> C:\Users\micha\OneDrive\Documents\GitHub\NEWPLATFORMER\Platformer2\Engine\x64\Debug\Engine.exe
+  Engine.vcxproj -> C:\Users\micha\OneDrive\Documents\GitHub\NEWPLATFORMER\Platformer2\Engine\x64\Debug\Engine.pdb (Full PDB)

@@ -1,8 +1,87 @@
-﻿  GameObjects.cpp
-  Generating code
-  3 of 121 functions ( 2.5%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  Engine.vcxproj -> C:\Users\aicaoc\Desktop\Platformer\Engine\x64\Release\Engine.exe
-  Engine.vcxproj -> C:\Users\aicaoc\Desktop\Platformer\Engine\x64\Release\Engine.pdb (Full PDB)
+﻿  Animator.cpp
+  Collider.cpp
+  Enemy.cpp
+  Engine.cpp
+  Game.cpp
+  GameObjects.cpp
+GameObjects.cpp(20): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
+GameObjects.cpp(21): warning C4244: '=': conversion from 'unsigned int' to 'float', possible loss of data
+  Player.cpp
+  randos.cpp
+  StandingState.cpp
+  stdafx.cpp
+sfml-audio-s.lib(SoundStream.cpp.obj) : error LNK2001: unresolved external symbol __imp_alSourcei
+sfml-audio-s.lib(SoundSource.cpp.obj) : error LNK2001: unresolved external symbol __imp_alSourcei
+sfml-audio-s.lib(SoundStream.cpp.obj) : error LNK2001: unresolved external symbol __imp_alGetSourcef
+sfml-audio-s.lib(SoundSource.cpp.obj) : error LNK2001: unresolved external symbol __imp_alGetSourcef
+sfml-audio-s.lib(SoundStream.cpp.obj) : error LNK2001: unresolved external symbol __imp_alGetSourcei
+sfml-audio-s.lib(SoundSource.cpp.obj) : error LNK2001: unresolved external symbol __imp_alGetSourcei
+sfml-audio-s.lib(SoundStream.cpp.obj) : error LNK2001: unresolved external symbol __imp_alSourcePlay
+sfml-audio-s.lib(SoundStream.cpp.obj) : error LNK2001: unresolved external symbol __imp_alSourceStop
+sfml-audio-s.lib(SoundStream.cpp.obj) : error LNK2001: unresolved external symbol __imp_alSourcePause
+sfml-audio-s.lib(SoundStream.cpp.obj) : error LNK2001: unresolved external symbol __imp_alSourceQueueBuffers
+sfml-audio-s.lib(SoundStream.cpp.obj) : error LNK2001: unresolved external symbol __imp_alSourceUnqueueBuffers
+sfml-audio-s.lib(SoundStream.cpp.obj) : error LNK2001: unresolved external symbol __imp_alGenBuffers
+sfml-audio-s.lib(SoundStream.cpp.obj) : error LNK2001: unresolved external symbol __imp_alDeleteBuffers
+sfml-audio-s.lib(SoundStream.cpp.obj) : error LNK2001: unresolved external symbol __imp_alBufferData
+sfml-audio-s.lib(SoundStream.cpp.obj) : error LNK2001: unresolved external symbol __imp_alGetBufferi
+sfml-audio-s.lib(SoundSource.cpp.obj) : error LNK2001: unresolved external symbol __imp_alGenSources
+sfml-audio-s.lib(SoundSource.cpp.obj) : error LNK2001: unresolved external symbol __imp_alDeleteSources
+sfml-audio-s.lib(SoundSource.cpp.obj) : error LNK2001: unresolved external symbol __imp_alSourcef
+sfml-audio-s.lib(SoundSource.cpp.obj) : error LNK2001: unresolved external symbol __imp_alSource3f
+sfml-audio-s.lib(SoundSource.cpp.obj) : error LNK2001: unresolved external symbol __imp_alGetSource3f
+sfml-audio-s.lib(AudioDevice.cpp.obj) : error LNK2001: unresolved external symbol __imp_alIsExtensionPresent
+sfml-audio-s.lib(AudioDevice.cpp.obj) : error LNK2001: unresolved external symbol __imp_alGetEnumValue
+sfml-audio-s.lib(AudioDevice.cpp.obj) : error LNK2001: unresolved external symbol __imp_alListenerf
+sfml-audio-s.lib(AudioDevice.cpp.obj) : error LNK2001: unresolved external symbol __imp_alListener3f
+sfml-audio-s.lib(AudioDevice.cpp.obj) : error LNK2001: unresolved external symbol __imp_alListenerfv
+sfml-audio-s.lib(AudioDevice.cpp.obj) : error LNK2001: unresolved external symbol __imp_alcCreateContext
+sfml-audio-s.lib(AudioDevice.cpp.obj) : error LNK2001: unresolved external symbol __imp_alcMakeContextCurrent
+sfml-audio-s.lib(AudioDevice.cpp.obj) : error LNK2001: unresolved external symbol __imp_alcDestroyContext
+sfml-audio-s.lib(AudioDevice.cpp.obj) : error LNK2001: unresolved external symbol __imp_alcOpenDevice
+sfml-audio-s.lib(AudioDevice.cpp.obj) : error LNK2001: unresolved external symbol __imp_alcCloseDevice
+sfml-audio-s.lib(AudioDevice.cpp.obj) : error LNK2001: unresolved external symbol __imp_alcIsExtensionPresent
+sfml-audio-s.lib(SoundFileReaderFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_decoder_new
+sfml-audio-s.lib(SoundFileReaderFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_decoder_delete
+sfml-audio-s.lib(SoundFileReaderFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_decoder_get_state
+sfml-audio-s.lib(SoundFileReaderFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_decoder_init_stream
+sfml-audio-s.lib(SoundFileReaderFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_decoder_finish
+sfml-audio-s.lib(SoundFileReaderFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_decoder_process_single
+sfml-audio-s.lib(SoundFileReaderFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_decoder_process_until_end_of_metadata
+sfml-audio-s.lib(SoundFileReaderFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_decoder_seek_absolute
+sfml-audio-s.lib(SoundFileWriterFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_encoder_new
+sfml-audio-s.lib(SoundFileWriterFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_encoder_delete
+sfml-audio-s.lib(SoundFileWriterFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_encoder_set_channels
+sfml-audio-s.lib(SoundFileWriterFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_encoder_set_bits_per_sample
+sfml-audio-s.lib(SoundFileWriterFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_encoder_set_sample_rate
+sfml-audio-s.lib(SoundFileWriterFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_encoder_init_file
+sfml-audio-s.lib(SoundFileWriterFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_encoder_finish
+sfml-audio-s.lib(SoundFileWriterFlac.cpp.obj) : error LNK2001: unresolved external symbol FLAC__stream_encoder_process_interleaved
+sfml-audio-s.lib(SoundFileReaderOgg.cpp.obj) : error LNK2001: unresolved external symbol ov_clear
+sfml-audio-s.lib(SoundFileReaderOgg.cpp.obj) : error LNK2001: unresolved external symbol ov_open_callbacks
+sfml-audio-s.lib(SoundFileReaderOgg.cpp.obj) : error LNK2001: unresolved external symbol ov_test_callbacks
+sfml-audio-s.lib(SoundFileReaderOgg.cpp.obj) : error LNK2001: unresolved external symbol ov_pcm_total
+sfml-audio-s.lib(SoundFileReaderOgg.cpp.obj) : error LNK2001: unresolved external symbol ov_pcm_seek
+sfml-audio-s.lib(SoundFileReaderOgg.cpp.obj) : error LNK2001: unresolved external symbol ov_info
+sfml-audio-s.lib(SoundFileReaderOgg.cpp.obj) : error LNK2001: unresolved external symbol ov_read
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol ogg_stream_packetin
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol ogg_stream_flush
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol ogg_stream_init
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol ogg_stream_clear
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_info_init
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_info_clear
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_comment_init
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_comment_clear
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_block_init
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_block_clear
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_dsp_clear
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_analysis_init
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_analysis_headerout
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_analysis_buffer
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_analysis_wrote
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_analysis_blockout
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_analysis
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_bitrate_addblock
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_bitrate_flushpacket
+sfml-audio-s.lib(SoundFileWriterOgg.cpp.obj) : error LNK2001: unresolved external symbol vorbis_encode_init_vbr
+C:\Users\micha\OneDrive\Documents\GitHub\NEWPLATFORMER\Platformer2\Engine\x64\Release\Engine.exe : fatal error LNK1120: 71 unresolved externals
