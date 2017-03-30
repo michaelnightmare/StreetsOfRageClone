@@ -5,7 +5,9 @@
 enum AnimationType
 {
 	IDLE,
+	IDLEL,
 	ENEMYIDLE,
+	ENEMYIDLEL,
 	INTRO,
 	ATTACK,
 	MORPH,
@@ -13,8 +15,11 @@ enum AnimationType
 	RUNL,
 	SPECIAL,
 	JUMP,
+	JUMPL,
 	HIT,
-	DEAD
+	DEAD,
+	WALK,
+	WALKL
 };
 
 class Animator

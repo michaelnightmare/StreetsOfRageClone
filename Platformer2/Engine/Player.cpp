@@ -13,6 +13,7 @@ Player::Player(std::string texturePath, sf::Vector2f pos)
 	, jumpCooldown(0.0f)
 	, isgrounded(true)
 	, jumpHeight(0.f)
+	, facingRight(true)
 	
 {   
 	body.setSize(sf::Vector2f(200,250));
@@ -148,31 +149,45 @@ void Player::CollidedWith(GameObject * other)
 
 void Player::HandleInput(float dt)
 {
+	//IDLES
+	if (facingRight && isgrounded)
+	{
+		anim->ChooseRow(AnimationType::IDLE);
+
+	}
+	else if (!facingRight && isgrounded)
+	{
+		anim->ChooseRow(AnimationType::IDLEL);
+	}
+
+
+
 	//KEY PRESSED
 	//---------------------------------------------
 	//Movement to the right
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
 		m_movement.x = playerSpeed * dt;
-
+		facingRight = true;
 		//When running state is added... delete the anim line and uncomment this line
 		//m_stateMachine->ChangeState(RunningState::Instance());
 
-		if (isgrounded)
+		if (facingRight && isgrounded)
 		{
 			anim->ChooseRow(AnimationType::RUN);
+			
 		}
 	}
 
 	//Movement to the left
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
-		 
+		facingRight = false;
 		m_movement.x = -playerSpeed * dt;
-		if (isgrounded)
+		if (!facingRight && isgrounded)
 		{
 			
-			anim->ChooseRow(AnimationType::RUN);
+			anim->ChooseRow(AnimationType::RUNL);
 		}
 	}
 	
@@ -203,7 +218,11 @@ void Player::HandleInput(float dt)
 	//Jumping  
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && isgrounded && jumpCooldown <= 0.0f )
 	{
-		anim->ChooseRow(AnimationType::JUMP);
+		if (facingRight)
+			anim->ChooseRow(AnimationType::JUMP);
+		else
+			anim->ChooseRow(AnimationType::JUMPL);
+
 		JumpSound.play();
 		//Player isn't on the ground anymore
 		isjumping = true; 

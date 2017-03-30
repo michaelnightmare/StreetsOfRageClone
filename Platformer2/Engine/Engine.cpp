@@ -21,7 +21,7 @@ int main()
 
 	sf::Music Music;
 	Music.openFromFile("Audio/Music.wav");
-	Music.play();
+	//Music.play();
 	Music.setLoop(true);
 
 	sf::Sprite background;

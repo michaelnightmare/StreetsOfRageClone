@@ -60,6 +60,11 @@ void Game::Draw(sf::RenderWindow * window)
 	
 	playerView->setCenter(m_player->GetPosition().x + 200.f, 400);
 
+	if (m_player->GetPosition().x < 50.f)
+	{
+		playerView->setCenter(260.f, 400);
+	}
+
 	window->setView(*playerView);
 }
 

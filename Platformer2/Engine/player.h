@@ -34,5 +34,6 @@ protected:
 	float jumpCooldown;
 	bool isjumping;
 	bool isgrounded;
+	bool facingRight;
 };
 

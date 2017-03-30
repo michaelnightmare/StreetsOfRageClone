@@ -58,8 +58,8 @@ int Animator::ChooseRow(AnimationType type)
 	case AnimationType::RUNL:
 	{
 		
-		framecount = 7;
-		return m_row = 3;
+		framecount = 5;
+		return m_row = 9;
 		break;
 	}
 	case AnimationType::DEAD:
@@ -78,22 +78,60 @@ int Animator::ChooseRow(AnimationType type)
 	{
 
 		framecount = 3;
+		return m_row = 2;
+		break;
+	}
+
+	case AnimationType::JUMPL:
+	{
+
+		framecount = 3;
 		return m_row = 8;
 		break;
 	}
 	
 	case AnimationType::IDLE:
 	{
-		framecount = 6;
+		framecount = 5;
 		return m_row = 0;
 		break;
 	}
+
+	case AnimationType::IDLEL :
+	{
+		framecount = 5;
+		return m_row = 10;
+		break;
+	}
+
+
 	case AnimationType::ENEMYIDLE:
 	{
-		framecount = 0;
+		framecount = 5;
 		return m_row = 0;
 		break;
 	}
+	case AnimationType::ENEMYIDLEL:
+	{
+		framecount = 5;
+		return m_row = 5;
+		break;
+	}
+
+	case AnimationType::WALK:
+	{
+		framecount = 7;
+		return m_row = 3;
+		break;
+	}
+
+	case AnimationType::WALKL:
+	{
+		framecount = 7;
+		return m_row = 6;
+		break;
+	}
+
 	}
 }
 
