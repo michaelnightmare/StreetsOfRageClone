@@ -28,7 +28,7 @@ protected:
 	StateMachine* m_stateMachine;
 
 
-	float enemySpeed = 100.f;
+	float enemySpeed = 40.f;
 	float patrolTimer;
 	bool enemyAlive;
 	sf::Vector2f enemyPEnd;

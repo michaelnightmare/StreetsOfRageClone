@@ -1,3 +1,4 @@
-﻿  Enemy.cpp
+﻿  Animator.cpp
+c:\users\micha\onedrive\documents\github\newplatformer\platformer2\engine\animator.cpp(139): warning C4715: 'Animator::ChooseRow': not all control paths return a value
   Engine.vcxproj -> C:\Users\micha\OneDrive\Documents\GitHub\NEWPLATFORMER\Platformer2\Engine\x64\Debug\Engine.exe
   Engine.vcxproj -> C:\Users\micha\OneDrive\Documents\GitHub\NEWPLATFORMER\Platformer2\Engine\x64\Debug\Engine.pdb (Full PDB)

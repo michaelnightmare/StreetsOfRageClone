@@ -43,4 +43,5 @@ protected:
 	int m_column;
 	int m_row;
 	int framecount;
+	bool zombie;
 };

@@ -3,6 +3,7 @@
 
 
 Animator::Animator(GameObject* AnimatedObj) : owner(AnimatedObj),
+zombie(false),
 
 m_column(0), m_row(0), m_timer(0.15f), m_timeElapsed(0.f)
 {
@@ -120,6 +121,7 @@ int Animator::ChooseRow(AnimationType type)
 
 	case AnimationType::WALK:
 	{
+		zombie = true;
 		framecount = 7;
 		return m_row = 3;
 		break;
@@ -127,6 +129,7 @@ int Animator::ChooseRow(AnimationType type)
 
 	case AnimationType::WALKL:
 	{
+		zombie = true;
 		framecount = 7;
 		return m_row = 6;
 		break;
@@ -145,14 +148,28 @@ void Animator::LoopAnimation(float dt,int framecount)
 		m_column++;
 	}
 
-	if (m_column > framecount)
-
+	if (!zombie)
 	{
-		m_column = 0;
+		if (m_column > framecount)
 
-		if (m_row != 18) // If character isn't dead
 		{
-			m_row = 0; //switch back to idle (maybe better way to do)
+			m_column = 0;
+
+			//if (m_row != 18) // If character isn't dead
+			//{
+			//	m_row = 0; //switch back to idle (maybe better way to do)
+			//}
 		}
+	}
+	else
+	{
+		if (m_column > framecount)
+
+		{
+			m_column = 0;
+
+			
+		}
+
 	}
 }
